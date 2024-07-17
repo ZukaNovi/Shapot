@@ -1,0 +1,102 @@
+[gd_scene load_steps=22 format=3 uid="uid://ch22r5hovousd"]
+
+[ext_resource type="Texture2D" uid="uid://qks4c4clytry" path="res://Assets/Sprites/Player/MoveUp/Sprite-0001.png" id="1_672rs"]
+[ext_resource type="Texture2D" uid="uid://bpbw06mftai6t" path="res://Assets/Sprites/Player/MoveUp/Sprite-0002.png" id="2_esccw"]
+[ext_resource type="Texture2D" uid="uid://nv18wvekgh6a" path="res://Assets/Sprites/Player/MoveUp/Sprite-0003.png" id="3_0hibm"]
+[ext_resource type="Texture2D" uid="uid://dvmpxjvxpke72" path="res://Assets/Sprites/Player/MoveUp/Sprite-0004.png" id="4_idiqv"]
+[ext_resource type="Texture2D" uid="uid://cgnav64fjwudo" path="res://Assets/Sprites/Player/MoveUp/Sprite-0005.png" id="5_4sxhn"]
+[ext_resource type="Texture2D" uid="uid://cc1f2rb7d13u6" path="res://Assets/Sprites/Player/MoveUp/Sprite-0006.png" id="6_rojo3"]
+[ext_resource type="Texture2D" uid="uid://cqf707k07dyaj" path="res://Assets/Sprites/Player/MoveUp/Sprite-0007.png" id="7_f75wk"]
+[ext_resource type="Texture2D" uid="uid://cx4w5q3ur1aoc" path="res://Assets/Sprites/Player/MoveUp/Sprite-0008.png" id="8_5ccgr"]
+[ext_resource type="Texture2D" uid="uid://dxwwnwcxcoa5n" path="res://Assets/Sprites/Player/MoveUp/Sprite-0009.png" id="9_punht"]
+[ext_resource type="Texture2D" uid="uid://d2hgjgvqfhgm2" path="res://Assets/Sprites/Player/MoveUp/Sprite-0010.png" id="10_mlini"]
+[ext_resource type="Texture2D" uid="uid://kkxg78m2exh1" path="res://Assets/Sprites/Player/MoveUp/Sprite-0011.png" id="11_7jqin"]
+[ext_resource type="Texture2D" uid="uid://dy75erpsayfl0" path="res://Assets/Sprites/Player/MoveUp/Sprite-0012.png" id="12_n4at2"]
+[ext_resource type="Texture2D" uid="uid://be24nxyss0g3t" path="res://Assets/Sprites/Player/MoveUp/Sprite-0013.png" id="13_yhar1"]
+[ext_resource type="Texture2D" uid="uid://doyq0bpybsdgu" path="res://Assets/Sprites/Player/MoveUp/Sprite-0014.png" id="14_702kw"]
+[ext_resource type="Texture2D" uid="uid://b5lnta4y8dp1y" path="res://Assets/Sprites/Player/MoveUp/Sprite-0015.png" id="15_0g7kl"]
+[ext_resource type="Texture2D" uid="uid://oskljh5r2rc8" path="res://Assets/Sprites/Player/MoveUp/Sprite-0016.png" id="16_ym6tr"]
+[ext_resource type="Texture2D" uid="uid://1y2uc4n2thbi" path="res://Assets/Sprites/Player/MoveUp/Sprite-0017.png" id="17_v6ak3"]
+[ext_resource type="Texture2D" uid="uid://b33b0dkgw1qe6" path="res://Assets/Sprites/Player/MoveUp/Sprite-0018.png" id="18_3lees"]
+[ext_resource type="Texture2D" uid="uid://mcy3wt32xlty" path="res://Assets/Sprites/Player/MoveUp/Sprite-0019.png" id="19_4qgsa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eestp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_672rs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_esccw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0hibm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_idiqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4sxhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rojo3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f75wk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5ccgr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_punht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mlini")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7jqin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_n4at2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_yhar1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_702kw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_0g7kl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ym6tr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_v6ak3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3lees")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_4qgsa")
+}],
+"loop": true,
+"name": &"MoveUp",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0oel1"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(242, 142)
+sprite_frames = SubResource("SpriteFrames_eestp")
+animation = &"MoveUp"
+autoplay = "MoveUp"
+frame_progress = 0.416472
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(239, 159)
+shape = SubResource("CapsuleShape2D_0oel1")
