@@ -26,3 +26,7 @@ func _input(event):
 		$AnimatedSprite2D.play("Moving Left")
 	else: 
 		$AnimatedSprite2D.play("Idle")
+
+
+func _on_back_button_pressed():
+	pass # Replace with function body.

@@ -1,9 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://spnvri7fwple"]
+[gd_scene load_steps=4 format=3 uid="uid://spnvri7fwple"]
 
 [ext_resource type="PackedScene" uid="uid://ch22r5hovousd" path="res://Scenes/player.tscn" id="1_3jvnm"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_e3y04"]
+[ext_resource type="PackedScene" uid="uid://dqai4a0bufjj" path="res://Scenes/pause_menu.tscn" id="2_b3cxr"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_e3y04")
 
 [node name="Player" parent="." instance=ExtResource("1_3jvnm")]
 texture_filter = 1
-position = Vector2(1, 2)
+position = Vector2(340, 172)
+
+[node name="PauseMenu" parent="Player" instance=ExtResource("2_b3cxr")]
+visible = false
+offset_left = 150.0
+offset_top = 100.0
+offset_right = 150.0
+offset_bottom = 100.0

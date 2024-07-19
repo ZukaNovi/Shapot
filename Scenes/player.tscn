@@ -110,4 +110,4 @@ position = Vector2(239, 151)
 shape = SubResource("CapsuleShape2D_0oel1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(237, 150)
+position = Vector2(237, 148)
