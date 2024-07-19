@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://4c5matfpxp6a"]
+
+[ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_3p57w"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -33.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3p57w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -356.5
+offset_top = 81.0
+offset_right = 356.5
+offset_bottom = 642.0
+grow_horizontal = 2
+
+[node name="Fullscreen" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="VSync" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+text = "VSync"
+
+[node name="MenuButton" type="MenuButton" parent="VBoxContainer"]
+layout_mode = 2
+text = "Video Resolution"
+
+[node name="Volume" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Backbutton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="toggled" from="VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="VBoxContainer/VSync" to="." method="_on_v_sync_toggled"]
+[connection signal="drag_ended" from="VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_drag_ended"]
+[connection signal="pressed" from="VBoxContainer/Backbutton" to="." method="_on_backbutton_pressed"]
