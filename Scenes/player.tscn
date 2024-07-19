@@ -102,8 +102,12 @@ texture_filter = 1
 position = Vector2(242, 142)
 sprite_frames = SubResource("SpriteFrames_eestp")
 animation = &"Idle"
-frame_progress = 0.293808
+frame = 1
+frame_progress = 0.200541
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(239, 151)
 shape = SubResource("CapsuleShape2D_0oel1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(237, 150)
