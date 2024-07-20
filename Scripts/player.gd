@@ -33,7 +33,3 @@ func _input(event):
 			$AnimatedSprite2D.play("Idle(Right)")
 		elif event.is_action_released("ui_left"):
 			$AnimatedSprite2D.play("Idle(Left)")
-		
-
-func _on_back_button_pressed():
-	pass # Replace with function body.
