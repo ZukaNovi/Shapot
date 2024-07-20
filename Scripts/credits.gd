@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 const section_time := 2.0
 const line_time := 0.3
