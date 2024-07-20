@@ -17,16 +17,23 @@ func _physics_process(_delta):
 	move_and_slide()
 func _input(event):
 	if event.is_action_pressed("ui_up"):
-		$AnimatedSprite2D.play("Moving Up")
+		$AnimatedSprite2D.play("MoveUp")
 	elif event.is_action_pressed("ui_down"):
-		$AnimatedSprite2D.play("Moving Down")
+		$AnimatedSprite2D.play("MoveDown")
 	elif event.is_action_pressed("ui_right"):
-		$AnimatedSprite2D.play("Moving Right")
+		$AnimatedSprite2D.play("MoveRight")
 	elif event.is_action_pressed("ui_left"):
-		$AnimatedSprite2D.play("Moving Left")
-	else: 
-		$AnimatedSprite2D.play("Idle")
-
+		$AnimatedSprite2D.play("MoveLeft")
+	else:
+		if event.is_action_released("ui_up"):
+			$AnimatedSprite2D.play("Idle(Back)")
+		elif event.is_action_released("ui_down"):
+			$AnimatedSprite2D.play("Idle(Screen)")
+		elif event.is_action_released("ui_right"):
+			$AnimatedSprite2D.play("Idle(Right)")
+		elif event.is_action_released("ui_left"):
+			$AnimatedSprite2D.play("Idle(Left)")
+		
 
 func _on_back_button_pressed():
 	pass # Replace with function body.
