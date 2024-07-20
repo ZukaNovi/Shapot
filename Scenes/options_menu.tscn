@@ -32,10 +32,6 @@ text = "Fullscreen"
 layout_mode = 2
 text = "VSync"
 
-[node name="MenuButton" type="MenuButton" parent="VBoxContainer"]
-layout_mode = 2
-text = "Video Resolution"
-
 [node name="Volume" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Master Volume"
