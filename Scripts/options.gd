@@ -1,8 +1,11 @@
 extends Control
 
-@onready var fullscreen_checkbox = $VBoxContainer/Fullscreen
-@onready var vsync_checkbox = $VBoxContainer/VSync
-@onready var volume_slider = $VBoxContainer/VolumeSlider
+@onready var fullscreen_checkbox = $Fullscreen
+@onready var vsync_checkbox = $VSync
+@onready var volume_slider = $VolumeSlider
+@onready var v_box_container = $"."
+@onready var color_rect_2 = $"../ColorRect2"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,9 +29,9 @@ func _on_fullscreen_toggled(toggled_on):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 
-func _on_backbutton_pressed():
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-
+func _on_back_pressed():
+	v_box_container.hide()
+	color_rect_2.hide()
 
 func _on_v_sync_toggled(toggled_on):
 	ConfigFileHandler.save_video_settings("vsync", toggled_on)
