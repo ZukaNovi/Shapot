@@ -32,6 +32,10 @@ func _on_backbutton_pressed():
 
 func _on_v_sync_toggled(toggled_on):
 	ConfigFileHandler.save_video_settings("vsync", toggled_on)
+	if toggled_on:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+	else:
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
 
 func _on_volume_slider_drag_ended(value_changed):
