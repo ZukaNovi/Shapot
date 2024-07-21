@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var pause_menu = $Player/PauseMenu
 
-
 var paused = false
 
 func _process(delta):
