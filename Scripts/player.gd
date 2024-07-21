@@ -51,3 +51,4 @@ func take_damage(impact):
 		
 	if currentHP <= 0:
 		emit_signal("died")
+		get_tree().reload_current_scene()
