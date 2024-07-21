@@ -10,6 +10,7 @@ var over_texture_33 = preload("res://Assets/Sprites/Player/Health-Stamina Bar/he
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.connect("damaged", Callable(self, "_on_player_damage_taken"))
+	player.connect("killed", Callable(self, "_on_player_died"))
 	
 	value = player.currentHP
 	min_value = 0
@@ -26,6 +27,9 @@ func _on_player_damage_taken(impact):
 		texture_over = over_texture_66
 	else:
 		texture_over = over_texture_33
+		
+func _on_player_killed():
+	value = player.MAX_HP
 	
 	
 	
