@@ -10,7 +10,7 @@ script = ExtResource("1_e3y04")
 
 [node name="Player" parent="." instance=ExtResource("1_3jvnm")]
 texture_filter = 1
-position = Vector2(340, 172)
+position = Vector2(340, 175)
 
 [node name="PauseMenu" parent="Player" instance=ExtResource("2_b3cxr")]
 visible = false
