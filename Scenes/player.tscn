@@ -650,16 +650,15 @@ script = ExtResource("1_7u6th")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(242, 142)
 sprite_frames = SubResource("SpriteFrames_eestp")
 animation = &"MoveUp"
 frame = 1
 frame_progress = 0.263184
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(239, 151)
+position = Vector2(-3, 9)
 shape = SubResource("CapsuleShape2D_0oel1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(237, 148)
+position = Vector2(-1, 0)
 zoom = Vector2(1.5, 1.5)
