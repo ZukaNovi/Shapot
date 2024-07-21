@@ -1,6 +1,13 @@
 extends CharacterBody2D
 
+
+signal damaged(by)
+signal died()
+
 const SPEED = 200.0
+const MAX_HP = 100.0
+var currentHP = MAX_HP
+
 
 func _physics_process(_delta):
 	var direction_x = Input.get_axis("ui_left", "ui_right")
@@ -32,3 +39,15 @@ func _input(event):
 			$AnimatedSprite2D.play("Idle(Right)")
 		elif event.is_action_released("ui_left"):
 			$AnimatedSprite2D.play("Idle(Left)")
+
+func take_damage(impact):
+	var damage = int(impact)
+	var previousHP = currentHP
+	currentHP -= damage
+	currentHP = clamp(currentHP, 0, MAX_HP)
+	
+	if previousHP != currentHP:
+		emit_signal("damaged", damage)
+		
+	if currentHP <= 0:
+		emit_signal("died")
