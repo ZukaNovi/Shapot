@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://spnvri7fwple"]
+[gd_scene load_steps=9 format=3 uid="uid://spnvri7fwple"]
 
 [ext_resource type="PackedScene" uid="uid://ch22r5hovousd" path="res://Scenes/player.tscn" id="1_3jvnm"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_e3y04"]
@@ -7,24 +7,30 @@
 [ext_resource type="Texture2D" uid="uid://bobyxwa2hggj3" path="res://Assets/Sprites/Player/Health-Stamina Bar/healthbarfull.png" id="5_blx5x"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="5_gai3t"]
 [ext_resource type="Texture2D" uid="uid://r6br7qbipflp" path="res://Assets/Sprites/Player/Health-Stamina Bar/healthprogress.png" id="6_vk4rf"]
+[ext_resource type="Texture2D" uid="uid://dxrwhv7d2k7ih" path="res://Assets/Sprites/map.png" id="8_rhrdv"]
 
 [node name="Game" type="Node2D"]
-position = Vector2(2, -2)
+scale = Vector2(1.0052, 0.929174)
 script = ExtResource("1_e3y04")
 
 [node name="Player" parent="." instance=ExtResource("1_3jvnm")]
 texture_filter = 1
-position = Vector2(332, 166)
+position = Vector2(558.1, 343.315)
 
 [node name="PauseMenu" parent="Player" instance=ExtResource("2_b3cxr")]
 visible = false
-offset_left = 150.0
-offset_top = 100.0
-offset_right = 150.0
-offset_bottom = 100.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5709
+offset_top = -77.4881
+offset_right = -82.5709
+offset_bottom = -77.4881
 
 [node name="Enemy" parent="." instance=ExtResource("4_gio3j")]
-position = Vector2(-55, 62)
+position = Vector2(179.07, 111.927)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -42,3 +48,8 @@ texture_under = ExtResource("5_blx5x")
 texture_over = ExtResource("5_blx5x")
 texture_progress = ExtResource("6_vk4rf")
 script = ExtResource("5_gai3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(582.971, 323.943)
+texture = ExtResource("8_rhrdv")
