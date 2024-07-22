@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://ch22r5hovousd"]
+[gd_scene load_steps=154 format=3 uid="uid://ch22r5hovousd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_7u6th"]
 [ext_resource type="Texture2D" uid="uid://cokkv1yycimgo" path="res://Assets/Sprites/Player/Idle(Back)/Idle(Back)1.png" id="2_7vsjg"]
@@ -150,6 +150,7 @@
 [ext_resource type="Texture2D" uid="uid://c8e2c4hu2qd1s" path="res://Assets/Sprites/Player/MoveUp/MoveUp15.png" id="148_csm6c"]
 [ext_resource type="Texture2D" uid="uid://bhywp27q27d10" path="res://Assets/Sprites/Player/MoveUp/MoveUp16.png" id="149_lfo5d"]
 [ext_resource type="Texture2D" uid="uid://doiyitb2lhoj0" path="res://Assets/Sprites/Player/MoveUp/MoveUp17.png" id="150_732sl"]
+[ext_resource type="PackedScene" uid="uid://tl8lq6gxyxld" path="res://Scenes/potion.tscn" id="151_5fmbr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eestp"]
 animations = [{
@@ -662,3 +663,6 @@ shape = SubResource("CapsuleShape2D_0oel1")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, 0)
 zoom = Vector2(1.5, 1.5)
+
+[node name="Potion" parent="." instance=ExtResource("151_5fmbr")]
+visible = false

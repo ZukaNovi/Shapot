@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://tl8lq6gxyxld"]
+
+[ext_resource type="Script" path="res://Scripts/potion.gd" id="1_5kx1n"]
+[ext_resource type="Texture2D" uid="uid://c0rtyj2o1fmio" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Throwing)1.png" id="1_7hn1p"]
+[ext_resource type="Texture2D" uid="uid://dxdrxcycdq4b0" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Throwing)2.png" id="2_opgv0"]
+[ext_resource type="Texture2D" uid="uid://dhfyexr7pflok" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Throwing)3.png" id="3_hh642"]
+[ext_resource type="Texture2D" uid="uid://c2afvb0wuxhaw" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Throwing)4.png" id="4_0fkfj"]
+[ext_resource type="Texture2D" uid="uid://vchxt2mw0oyn" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Throwing)5.png" id="5_20by4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kjqma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7hn1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_opgv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hh642")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0fkfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_20by4")
+}],
+"loop": false,
+"name": &"ThrowTeleport",
+"speed": 6.0
+}]
+
+[node name="Potion" type="Node2D"]
+script = ExtResource("1_5kx1n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kjqma")
+animation = &"ThrowTeleport"
+frame = 4
+frame_progress = 1.0
