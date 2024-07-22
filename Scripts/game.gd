@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var pause_menu = $Player/PauseMenu
+@onready var canvas_modulate = $TileMap/CanvasModulate
+@onready var point_light_2d = $PointLight2D
 
 var paused = false
 
