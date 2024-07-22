@@ -202,4 +202,4 @@ position = Vector2(55, -40)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.666667)
 texture = ExtResource("10_x0yvx")
-texture_scale = 6.71
+texture_scale = 5.28
