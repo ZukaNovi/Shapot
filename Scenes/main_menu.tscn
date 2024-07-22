@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b71as71excfvh"]
+[gd_scene load_steps=7 format=3 uid="uid://b71as71excfvh"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_vi586"]
 [ext_resource type="Theme" uid="uid://bht8pspww8qx2" path="res://Assets/Themes/options_theme.tres" id="2_lcs3t"]
+[ext_resource type="Texture2D" uid="uid://dx11udruu6quu" path="res://Assets/Sprites/Menu/Start.png" id="2_mwr32"]
 [ext_resource type="Texture2D" uid="uid://fuxayqol1lkd" path="res://Assets/Sprites/Menu/Options.png" id="3_ryxhi"]
 [ext_resource type="Texture2D" uid="uid://dl87cj7eyfe6c" path="res://Assets/Sprites/Menu/Credits.png" id="4_88x8s"]
+[ext_resource type="Texture2D" uid="uid://dtturfwpyxi80" path="res://Assets/Sprites/Menu/Exit.png" id="6_4csvq"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -33,23 +35,27 @@ grow_vertical = 2
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Start Game"
+icon = ExtResource("2_mwr32")
+flat = true
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_lcs3t")
 icon = ExtResource("3_ryxhi")
+flat = true
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 icon = ExtResource("4_88x8s")
+flat = true
 
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Exit"
+icon = ExtResource("6_4csvq")
+flat = true
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
