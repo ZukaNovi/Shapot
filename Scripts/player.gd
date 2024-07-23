@@ -23,6 +23,7 @@ var target_position = Vector2()
 
 @onready var potionReference = $Potion
 
+
 func _physics_process(delta):
 	if Engine.time_scale == 1:
 		var direction_x = Input.get_axis("ui_left", "ui_right")
@@ -40,21 +41,16 @@ func _physics_process(delta):
 		
 		if currentPotion == TELEPORT:
 			if Input.is_action_just_pressed("left_click"): # Teleport
-				potionReference.time += delta
+				potionReference.show()
 				var direction = (get_global_mouse_position() - global_position)
 				var distance = get_global_mouse_position().distance_to(global_position)
-				potionReference.throwPotion(global_position, direction, distance, 60)
-				
-				if potionReference.is_launch:
-					potionReference.z_axis = potionReference.initial_speed + sin(deg_to_rad(potionReference.throw_angle_degrees)) * potionReference.time - 0.5 * potionReference.gravity * pow(potionReference.time,2)
-					
-				if potionReference.z_axis > 0:
-					var x_axis: float = potionReference.initial_speed * cos(deg_to_rad(potionReference.throw_angle_degrees)) * potionReference.time
-					potionReference.global_position = potionReference.initial_position + potionReference.throw_direction * x_axis
-					potionReference.global_position.y = -potionReference.z_axis
-					
-				position = get_global_mouse_position()
-				move_and_slide()
+				potionReference.LaunchProjectile(global_position, direction, distance, 60)
+				#global_position = get_global_mouse_position()
+		if currentPotion == ACID:
+			if Input.is_action_just_pressed("left_click"):
+				var direction = (get_global_mouse_position() - global_position)
+				var distance = get_global_mouse_position().distance_to(global_position)
+				potionReference.LaunchProjectile(global_position, direction, distance, 60)
 			
 		if Input.is_action_just_pressed("acid_potion"):
 			print("Acid Potion")
@@ -100,3 +96,8 @@ func take_damage(impact):
 	if currentHP <= 0:
 		emit_signal("died")
 		get_tree().reload_current_scene()
+
+
+func _on_timer_timeout():
+	if potionReference.time_of_flight:
+		global_position = get_global_mouse_position()
