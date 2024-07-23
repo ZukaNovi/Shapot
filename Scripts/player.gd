@@ -45,6 +45,7 @@ func _physics_process(delta):
 				var direction = (get_global_mouse_position() - global_position)
 				var distance = get_global_mouse_position().distance_to(global_position)
 				potionReference.LaunchProjectile(global_position, direction, distance, 60)
+				
 				#global_position = get_global_mouse_position()
 		if currentPotion == ACID:
 			if Input.is_action_just_pressed("left_click"):
