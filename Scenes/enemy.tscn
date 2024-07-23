@@ -1,88 +1,30 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdv1gl5asp7sw"]
+[gd_scene load_steps=5 format=3 uid="uid://bdv1gl5asp7sw"]
 
+[ext_resource type="Texture2D" uid="uid://b10m4wf3ka6ju" path="res://icon.svg" id="1_3e34v"]
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_8oj47"]
-[ext_resource type="Texture2D" uid="uid://b3d8ivtw58ro3" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy LeftAttack/CUBEenemyINVERTED1.png" id="2_yftsh"]
-[ext_resource type="Texture2D" uid="uid://bwgf87rghm8c3" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy LeftAttack/CUBEenemyINVERTED2.png" id="3_gor21"]
-[ext_resource type="Texture2D" uid="uid://df0wwxulsuyvw" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy LeftAttack/CUBEenemyINVERTED3.png" id="4_78ipu"]
-[ext_resource type="Texture2D" uid="uid://ce6g1jmlym5ck" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy LeftAttack/CUBEenemyINVERTED4.png" id="5_a8me3"]
-[ext_resource type="Texture2D" uid="uid://cgg0i0em471cs" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy LeftAttack/CUBEenemyINVERTED5.png" id="6_of247"]
-[ext_resource type="Texture2D" uid="uid://7hwpw88gjd5l" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy LeftAttack/CUBEenemyINVERTED6.png" id="7_3ppj1"]
-[ext_resource type="Texture2D" uid="uid://dwdyy6mi504ul" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy LeftAttack/CUBEenemyINVERTED7.png" id="8_x7o1v"]
-[ext_resource type="Texture2D" uid="uid://cltq74jlw217y" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy RightAttack/CUBEenemy1.png" id="9_cjc62"]
-[ext_resource type="Texture2D" uid="uid://c08ltdj4w0quv" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy RightAttack/CUBEenemy2.png" id="10_axlot"]
-[ext_resource type="Texture2D" uid="uid://bsx1g2opuhmab" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy RightAttack/CUBEenemy3.png" id="11_fl540"]
-[ext_resource type="Texture2D" uid="uid://b34votski3c30" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy RightAttack/CUBEenemy4.png" id="12_f8i7g"]
-[ext_resource type="Texture2D" uid="uid://dggj3sqnqlji1" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy RightAttack/CUBEenemy5.png" id="13_s4lfa"]
-[ext_resource type="Texture2D" uid="uid://cpn6iaq08u0gd" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy RightAttack/CUBEenemy6.png" id="14_eo23c"]
-[ext_resource type="Texture2D" uid="uid://b2ov1e5cdd67d" path="res://Assets/Sprites/Enemy/CUBEenemy/CUBEenemy RightAttack/CUBEenemy7.png" id="15_7xuvp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_smxl8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_yftsh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_gor21")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_78ipu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_a8me3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_of247")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_3ppj1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_x7o1v")
+"texture": ExtResource("1_3e34v")
 }],
 "loop": true,
-"name": &"Attack Left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_cjc62")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_axlot")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_fl540")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_f8i7g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_s4lfa")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_eo23c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_7xuvp")
-}],
-"loop": true,
-"name": &"Attack Right",
+"name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1taaw"]
-radius = 4.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8x11"]
+size = Vector2(80, 92)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_8oj47")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-1, 1)
+position = Vector2(-2, 2)
+scale = Vector2(0.625, 0.664063)
 sprite_frames = SubResource("SpriteFrames_smxl8")
-animation = &"Attack Right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 1)
-shape = SubResource("CircleShape2D_1taaw")
+shape = SubResource("RectangleShape2D_q8x11")
