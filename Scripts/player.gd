@@ -42,9 +42,14 @@ func _physics_process(delta):
 		if currentPotion == TELEPORT:
 			if Input.is_action_just_pressed("left_click"): # Teleport
 				potionReference.show()
-				var direction = (get_global_mouse_position() - global_position)
-				var distance = get_global_mouse_position().distance_to(global_position)
+				var target_position = get_global_mouse_position()
+				var direction = (target_position - global_position)
+				var distance = target_position.distance_to(global_position)
+				potionReference.target_position = target_position
 				potionReference.LaunchProjectile(global_position, direction, distance, 60)
+				
+			
+				
 				
 				#global_position = get_global_mouse_position()
 		if currentPotion == ACID:

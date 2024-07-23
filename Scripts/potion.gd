@@ -8,7 +8,7 @@ var time: float = 0.0
 
 var initial_position: Vector2
 var throw_direction: Vector2
-
+var target_position: Vector2
 
 var z_axis = 0.0 # Simulate throwing the projectile on the z-axis by adding the z-axis to the y-axis
 var is_launch: bool = false
@@ -18,7 +18,7 @@ func _process(delta):
 	time += delta * time_mult
 	#print(global_position.x)
 	
-	animated_sprite_2d.play()
+	animated_sprite_2d.play("ThrowTeleport")
 		
 	if is_launch:
 		z_axis = initial_speed * sin(deg_to_rad(throw_angle_degrees)) * time - 0.5 * gravity * pow(time, 2)
@@ -29,8 +29,12 @@ func _process(delta):
 			global_position = initial_position + throw_direction * x_axis ## Move everything along the 'x-axis'
 			
 			$AnimatedSprite2D.position.y = -z_axis # Move only the projectile along the y axis based on the simulated z-axis
+			
+	
+	if int(abs(global_position.x - target_position.x)) == 0 && int(abs(global_position.y - target_position.y)) == 0: 
+		get_parent().global_position = target_position
+		hide()
 		
-
 func LaunchProjectile(initial_pos: Vector2, direction: Vector2, desired_distance: float, desired_angle_deg: float):
 	initial_position = initial_pos
 	throw_direction = direction.normalized()
