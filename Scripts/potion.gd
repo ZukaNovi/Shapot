@@ -18,10 +18,7 @@ func _process(delta):
 	time += delta * time_mult
 	#print(global_position.x)
 	
-	## PRESS LEFT CLİCK TO THROW THE BALL
-	if Input.is_action_just_pressed("left_click"):
-		animated_sprite_2d.play()
-		LaunchProjectile(global_position, Vector2(1, 1), 150, 60)
+	animated_sprite_2d.play()
 		
 	if is_launch:
 		z_axis = initial_speed * sin(deg_to_rad(throw_angle_degrees)) * time - 0.5 * gravity * pow(time, 2)
