@@ -1,14 +1,93 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvtw3r0p2f2eq"]
+[gd_scene load_steps=24 format=3 uid="uid://bvtw3r0p2f2eq"]
 
 [ext_resource type="Script" path="res://Scripts/potion.gd" id="1_5kx1n"]
 [ext_resource type="Texture2D" uid="uid://c0rtyj2o1fmio" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Throwing)1.png" id="1_7hn1p"]
+[ext_resource type="Texture2D" uid="uid://dcd3r7suj468" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Throwing)1.png" id="2_7e5l6"]
+[ext_resource type="Texture2D" uid="uid://j7qtsgqa360r" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Pool)1.png" id="2_d6bva"]
 [ext_resource type="Texture2D" uid="uid://dxdrxcycdq4b0" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Throwing)2.png" id="2_opgv0"]
+[ext_resource type="Texture2D" uid="uid://qn7c2n5ynq70" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Throwing)2.png" id="3_2dwg6"]
+[ext_resource type="Texture2D" uid="uid://be7lri7xv6tww" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Pool)2.png" id="3_dehp4"]
 [ext_resource type="Texture2D" uid="uid://dhfyexr7pflok" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Throwing)3.png" id="3_hh642"]
 [ext_resource type="Texture2D" uid="uid://c2afvb0wuxhaw" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Throwing)4.png" id="4_0fkfj"]
+[ext_resource type="Texture2D" uid="uid://dxqgorh6qaat7" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Pool)3.png" id="4_l4sy4"]
+[ext_resource type="Texture2D" uid="uid://ctrsrhdbq6xdo" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Throwing)3.png" id="4_rawgs"]
+[ext_resource type="Texture2D" uid="uid://ccjtovna7656n" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Pool)4.png" id="5_6rgnq"]
 [ext_resource type="Texture2D" uid="uid://vchxt2mw0oyn" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Throwing)5.png" id="5_20by4"]
+[ext_resource type="Texture2D" uid="uid://wc0bxaae6iu" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Throwing)4.png" id="5_yilng"]
+[ext_resource type="Texture2D" uid="uid://na1432bbxrb5" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Throwing)5.png" id="6_5iyi3"]
+[ext_resource type="Texture2D" uid="uid://bfnmjdyiyo5et" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Pool)5.png" id="6_plh18"]
+[ext_resource type="Texture2D" uid="uid://ccab45maydfb2" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Pool)6.png" id="7_4engu"]
+[ext_resource type="Texture2D" uid="uid://dl35qfrgi3m42" path="res://Assets/Sprites/Player/Potions/Explosive/Explosive(Throwing)1.png" id="7_wqwoc"]
+[ext_resource type="Texture2D" uid="uid://dahpe4134vfp" path="res://Assets/Sprites/Player/Potions/Explosive/Explosive(Throwing)2.png" id="8_7p4mx"]
+[ext_resource type="Texture2D" uid="uid://vfygske0h88j" path="res://Assets/Sprites/Player/Potions/Explosive/Explosive(Throwing)3.png" id="9_c7yl4"]
+[ext_resource type="Texture2D" uid="uid://7w1k4obakyyv" path="res://Assets/Sprites/Player/Potions/Explosive/Explosive(Throwing)4.png" id="10_ykncs"]
+[ext_resource type="Texture2D" uid="uid://dooxlbserfmfw" path="res://Assets/Sprites/Player/Potions/Explosive/Explosive(Throwing)5.png" id="11_713n3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kjqma"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d6bva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dehp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l4sy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6rgnq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_plh18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4engu")
+}],
+"loop": false,
+"name": &"AcidPool",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7e5l6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2dwg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rawgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yilng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5iyi3")
+}],
+"loop": false,
+"name": &"ThrowAcid",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_wqwoc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7p4mx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_c7yl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ykncs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_713n3")
+}],
+"loop": false,
+"name": &"ThrowExplosion",
+"speed": 3.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_7hn1p")
@@ -34,7 +113,8 @@ animations = [{
 script = ExtResource("1_5kx1n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kjqma")
-animation = &"ThrowTeleport"
+animation = &"AcidPool"
 frame = 4
-frame_progress = 1.0
+frame_progress = 0.161476
