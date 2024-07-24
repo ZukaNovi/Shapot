@@ -1,16 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://spnvri7fwple"]
+
+[gd_scene load_steps=12 format=3 uid="uid://spnvri7fwple"]
 
 [ext_resource type="PackedScene" uid="uid://ch22r5hovousd" path="res://Scenes/player.tscn" id="1_3jvnm"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_e3y04"]
 [ext_resource type="PackedScene" uid="uid://dqai4a0bufjj" path="res://Scenes/pause_menu.tscn" id="2_b3cxr"]
 [ext_resource type="PackedScene" uid="uid://bdv1gl5asp7sw" path="res://Scenes/enemy.tscn" id="4_gio3j"]
-[ext_resource type="Texture2D" uid="uid://bobyxwa2hggj3" path="res://Assets/Sprites/Player/Health-Stamina Bar/healthbarfull.png" id="5_blx5x"]
-[ext_resource type="Script" path="res://Scripts/health_bar.gd" id="5_gai3t"]
-[ext_resource type="Texture2D" uid="uid://r6br7qbipflp" path="res://Assets/Sprites/Player/Health-Stamina Bar/healthprogress.png" id="6_vk4rf"]
 [ext_resource type="Texture2D" uid="uid://dxrwhv7d2k7ih" path="res://Assets/Sprites/map.png" id="8_rhrdv"]
+[ext_resource type="PackedScene" uid="uid://cien6q3frysmt" path="res://Scenes/day_night_cycle.tscn" id="9_bo1jq"]
 [ext_resource type="Texture2D" uid="uid://b1tbxjcnugrtb" path="res://Assets/Sprites/TileSet/HouseTileSet.png" id="9_r8dqc"]
 [ext_resource type="Texture2D" uid="uid://d2gjt5u03pdlh" path="res://Assets/Sprites/TileSet/GrassLands.png" id="10_vibp1"]
 [ext_resource type="Texture2D" uid="uid://hw03yk35bk5u" path="res://Assets/Sprites/light.png" id="10_x0yvx"]
+[ext_resource type="PackedScene" uid="uid://bn17jitliftsk" path="res://Scenes/dungeon_entry.tscn" id="12_dhdje"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ollnp"]
 texture = ExtResource("9_r8dqc")
@@ -632,23 +632,6 @@ offset_bottom = 296.051
 [node name="Enemy" parent="." instance=ExtResource("4_gio3j")]
 position = Vector2(433.745, -63.4973)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -254.0
-offset_top = -26.0
-offset_right = -109.0
-offset_bottom = 14.0
-grow_horizontal = 0
-scale = Vector2(5, 3)
-texture_under = ExtResource("5_blx5x")
-texture_over = ExtResource("5_blx5x")
-texture_progress = ExtResource("6_vk4rf")
-script = ExtResource("5_gai3t")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 show_behind_parent = true
@@ -667,3 +650,9 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.666667)
 texture = ExtResource("10_x0yvx")
 texture_scale = 1.47
+
+[node name="DungeonEntry" parent="." instance=ExtResource("12_dhdje")]
+position = Vector2(-460.77, 44.412)
+scale = Vector2(0.717618, 0.701792)
+
+[node name="DayNightCycle" parent="." instance=ExtResource("9_bo1jq")]
