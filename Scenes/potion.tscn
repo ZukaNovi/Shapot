@@ -116,5 +116,5 @@ script = ExtResource("1_5kx1n")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kjqma")
 animation = &"AcidPool"
-frame = 5
-frame_progress = 1.0
+frame = 4
+frame_progress = 0.161476
