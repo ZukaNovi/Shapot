@@ -1,16 +1,13 @@
 extends CharacterBody2D
 
-
 signal damaged(by)
 signal died()
 
-
-enum{
+enum {
 	ACID,
 	TELEPORT,
 	EXPLOSION
 }
-
 
 const SPEED = 200.0
 const MAX_HP = 100.0
@@ -18,11 +15,12 @@ var currentHP = MAX_HP
 
 var currentPotion = EXPLOSION
 
+var potion
+
 var click_position = Vector2()
 var target_position = Vector2()
 
-@onready var potionReference = $Potion
-
+@onready var potionScene = preload("res://Scenes/potion.tscn")
 
 func _physics_process(delta):
 	if Engine.time_scale == 1:
@@ -38,32 +36,29 @@ func _physics_process(delta):
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 		move_and_slide()
 		
+		if Input.is_action_just_pressed("left_click"):
+			var target_position = get_global_mouse_position()
+			var direction = (target_position - global_position)
+			var distance = target_position.distance_to(global_position)
+			
+			potion = potionScene.instantiate()
+			get_parent().add_child(potion)
+			
+			potion.global_position = global_position
+			potion.target_position = target_position
+			potion.LaunchProjectile(global_position, direction, distance, 60)
+			
+			if currentPotion == TELEPORT:
+				potion.potionType = TELEPORT
+				potion.playerReference = self
+				potion.animated_sprite_2d.play("ThrowTeleport")
+			elif currentPotion == ACID:
+				potion.potionType = ACID
+				potion.animated_sprite_2d.play("ThrowAcid")
+			elif currentPotion == EXPLOSION:
+				potion.potionType = EXPLOSION
+				potion.animated_sprite_2d.play("ThrowExplosion")
 		
-		if currentPotion == TELEPORT:
-			if Input.is_action_just_pressed("left_click"): # Teleport
-				potionReference.show()
-				var target_position = get_global_mouse_position()
-				var direction = (target_position - global_position)
-				var distance = target_position.distance_to(global_position)
-				potionReference.target_position = target_position
-				potionReference.LaunchProjectile(global_position, direction, distance, 60)
-				#global_position = get_global_mouse_position()
-		elif currentPotion == ACID:
-			if Input.is_action_just_pressed("left_click"):
-				potionReference.show()
-				var target_position = get_global_mouse_position()
-				var direction = (target_position - global_position)
-				var distance = target_position.distance_to(global_position)
-				potionReference.target_position = target_position
-				potionReference.LaunchProjectile(global_position, direction, distance, 60)
-		elif currentPotion == EXPLOSION:
-			if Input.is_action_just_pressed("left_click"):
-				potionReference.show()
-				var target_position = get_global_mouse_position()
-				var direction = (target_position - global_position)
-				var distance = target_position.distance_to(global_position)
-				potionReference.target_position = target_position
-				potionReference.LaunchProjectile(global_position, direction, distance, 60)
 		if Input.is_action_just_pressed("acid_potion"):
 			print("Acid Potion")
 			currentPotion = ACID
@@ -73,8 +68,6 @@ func _physics_process(delta):
 		elif Input.is_action_just_pressed("teleport_potion"):
 			print("Teleport Potion")
 			currentPotion = TELEPORT
-
-
 
 func _input(event):
 	if Engine.time_scale == 1:
@@ -108,8 +101,3 @@ func take_damage(impact):
 	if currentHP <= 0:
 		emit_signal("died")
 		get_tree().reload_current_scene()
-
-
-func _on_timer_timeout():
-	if potionReference.time_of_flight:
-		global_position = get_global_mouse_position()
