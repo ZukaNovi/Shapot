@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://olbm5pdv812v"]
+
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_c3fw7"]
+[ext_resource type="Texture2D" uid="uid://wd0ir3fhdmeo" path="res://Assets/Sprites/questbackground.png" id="2_6ncob"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_c3fw7")
+
+[node name="QuestBox" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="QuestBox"]
+position = Vector2(109, 19.5)
+scale = Vector2(0.18533, 0.0601852)
+texture = ExtResource("2_6ncob")
+
+[node name="QuestDescription" type="RichTextLabel" parent="QuestBox"]
+offset_right = 214.0
+offset_bottom = 40.0
+text = "       Quest Description
+"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]

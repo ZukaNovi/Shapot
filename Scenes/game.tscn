@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://spnvri7fwple"]
+[gd_scene load_steps=20 format=3 uid="uid://spnvri7fwple"]
 
 [ext_resource type="PackedScene" uid="uid://ch22r5hovousd" path="res://Scenes/player.tscn" id="1_3jvnm"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_e3y04"]
@@ -7,9 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://dxrwhv7d2k7ih" path="res://Assets/Sprites/map.png" id="8_rhrdv"]
 [ext_resource type="PackedScene" uid="uid://cien6q3frysmt" path="res://Scenes/day_night_cycle.tscn" id="9_bo1jq"]
 [ext_resource type="Texture2D" uid="uid://b1tbxjcnugrtb" path="res://Assets/Sprites/TileSet/HouseTileSet.png" id="9_r8dqc"]
+[ext_resource type="Script" path="res://Scripts/quest.gd" id="10_uukpp"]
 [ext_resource type="Texture2D" uid="uid://d2gjt5u03pdlh" path="res://Assets/Sprites/TileSet/GrassLands.png" id="10_vibp1"]
 [ext_resource type="Texture2D" uid="uid://hw03yk35bk5u" path="res://Assets/Sprites/light.png" id="10_x0yvx"]
+[ext_resource type="Texture2D" uid="uid://b10m4wf3ka6ju" path="res://icon.svg" id="11_1nj2x"]
 [ext_resource type="PackedScene" uid="uid://bn17jitliftsk" path="res://Scenes/dungeon_entry.tscn" id="12_dhdje"]
+[ext_resource type="Script" path="res://Scripts/QuestSample.gd" id="12_u145w"]
+[ext_resource type="Script" path="res://Scripts/bed_sample.gd" id="13_rgxxg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ollnp"]
 texture = ExtResource("9_r8dqc")
@@ -651,6 +655,12 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ollnp")
 sources/1 = SubResource("TileSetAtlasSource_hk1si")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udk1h"]
+size = Vector2(119.379, 120.537)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsmh2"]
+size = Vector2(126.003, 119.998)
+
 [node name="Game" type="Node2D"]
 scale = Vector2(1.0052, 0.929174)
 script = ExtResource("1_e3y04")
@@ -701,3 +711,35 @@ position = Vector2(-460.77, 44.412)
 scale = Vector2(0.717618, 0.701792)
 
 [node name="DayNightCycle" parent="." instance=ExtResource("9_bo1jq")]
+
+[node name="QuestSample" type="Sprite2D" parent="." node_paths=PackedStringArray("quest")]
+position = Vector2(-102.467, 231.388)
+texture = ExtResource("11_1nj2x")
+script = ExtResource("12_u145w")
+quest = NodePath("Quest")
+
+[node name="Area2D" type="Area2D" parent="QuestSample"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestSample/Area2D"]
+shape = SubResource("RectangleShape2D_udk1h")
+
+[node name="BedSample" type="Sprite2D" parent="QuestSample"]
+position = Vector2(-135.296, 8.60979)
+scale = Vector2(0.1658, 0.197312)
+texture = ExtResource("11_1nj2x")
+script = ExtResource("13_rgxxg")
+
+[node name="Area2D" type="Area2D" parent="QuestSample/BedSample"]
+position = Vector2(-20.0022, 12.362)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestSample/BedSample/Area2D"]
+position = Vector2(17.0022, -12.3617)
+shape = SubResource("RectangleShape2D_jsmh2")
+
+[node name="Quest" type="Node2D" parent="QuestSample"]
+script = ExtResource("10_uukpp")
+quest_description = "go there"
+reached_goal_text = "go back"
+
+[connection signal="body_entered" from="QuestSample/Area2D" to="QuestSample" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="QuestSample/BedSample/Area2D" to="QuestSample/BedSample" method="_on_area_2d_body_entered"]
