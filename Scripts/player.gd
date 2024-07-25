@@ -9,6 +9,19 @@ enum {
 	EXPLOSION
 }
 
+var potionCooldowns = { # Potion cooldowns for each potion type
+	ACID: 3.0,
+	TELEPORT: 5.0,
+	EXPLOSION: 2.0
+}
+
+var lastPotionUseTimes = {
+	ACID: -99.0,
+	TELEPORT: -99.0,
+	EXPLOSION: -99.0
+}
+
+
 const SPEED = 200.0
 const MAX_HP = 100.0
 var currentHP = MAX_HP
@@ -37,28 +50,9 @@ func _physics_process(delta):
 		move_and_slide()
 		
 		if Input.is_action_just_pressed("left_click"):
-			var target_position = get_global_mouse_position()
-			var direction = (target_position - global_position)
-			var distance = target_position.distance_to(global_position)
+			if can_use_potions(currentPotion):
+				use_potion(currentPotion)
 			
-			potion = potionScene.instantiate()
-			get_parent().add_child(potion)
-			
-			potion.global_position = global_position
-			potion.target_position = target_position
-			potion.LaunchProjectile(global_position, direction, distance, 60)
-			
-			if currentPotion == TELEPORT:
-				potion.potionType = TELEPORT
-				potion.playerReference = self
-				potion.animated_sprite_2d.play("ThrowTeleport")
-			elif currentPotion == ACID:
-				potion.potionType = ACID
-				potion.animated_sprite_2d.play("ThrowAcid")
-			elif currentPotion == EXPLOSION:
-				potion.potionType = EXPLOSION
-				potion.animated_sprite_2d.play("ThrowExplosion")
-		
 		if Input.is_action_just_pressed("acid_potion"):
 			print("Acid Potion")
 			currentPotion = ACID
@@ -98,3 +92,36 @@ func take_damage(impact):
 	if currentHP <= 0:
 		emit_signal("died")
 		get_tree().reload_current_scene()
+		
+		
+func can_use_potions(potionType) -> bool: # Checks whether the potion is available to use
+	var current_time = Time.get_ticks_msec() / 1000.0
+	var last_use_time = lastPotionUseTimes[potionType]
+	var cooldown = potionCooldowns[potionType]
+	return current_time - last_use_time >= cooldown
+	
+	
+func use_potion(potionType): # Use the potion
+	target_position = get_global_mouse_position()
+	var direction = (target_position - global_position)
+	var distance = target_position.distance_to(global_position)
+	
+	potion = potionScene.instantiate()
+	get_parent().add_child(potion)
+	
+	potion.global_position = global_position
+	potion.target_position = target_position
+	potion.LaunchProjectile(global_position, direction, distance, 60)
+	
+	if currentPotion == TELEPORT:
+		potion.potionType = TELEPORT
+		potion.playerReference = self
+		potion.animated_sprite_2d.play("ThrowTeleport")
+	elif currentPotion == ACID:
+		potion.potionType = ACID
+		potion.animated_sprite_2d.play("ThrowAcid")
+	elif currentPotion == EXPLOSION:
+		potion.potionType = EXPLOSION
+		potion.animated_sprite_2d.play("ThrowExplosion")
+		
+	lastPotionUseTimes[currentPotion] = Time.get_ticks_msec() / 1000.0
