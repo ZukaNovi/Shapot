@@ -68,43 +68,24 @@ func _physics_process(delta):
 		elif Input.is_action_just_pressed("teleport_potion"):
 			print("Teleport Potion")
 			currentPotion = TELEPORT
+	#ANIMATIONS------------------------------------------------
 	var char_velocity = Vector2.ZERO
-	if Input.is_action_just_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right"):
 		char_velocity.x += 1.0
-	if Input.is_action_just_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left"):
 		char_velocity.x -= 1.0
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down"):
 		char_velocity.y += 1.0
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up"):
 		char_velocity.y -= 1.0
 	char_velocity = char_velocity.normalized()
-	
 	if char_velocity == Vector2.ZERO:
 		$AnimationTree.get("parameters/playback").travel("Idle")
 	else:
 		$AnimationTree.get("parameters/playback").travel("Walk")
 		$AnimationTree.set("parameters/Idle/blend_position", char_velocity)
 		$AnimationTree.set("parameters/Walk/blend_position", char_velocity)
-#func _input(event):
-	#if Engine.time_scale == 1:
-		#if event.is_action_pressed("ui_up"):
-			#$AnimatedSprite2D.play("MoveUp")
-		#elif event.is_action_pressed("ui_down"):
-			#$AnimatedSprite2D.play("MoveDown")
-		#elif event.is_action_pressed("ui_right"):
-			#$AnimatedSprite2D.play("MoveRight")
-		#elif event.is_action_pressed("ui_left"):
-			#$AnimatedSprite2D.play("MoveLeft")
-		#else:
-			#if event.is_action_released("ui_up"):
-				#$AnimatedSprite2D.play("Idle(Back)")
-			#elif event.is_action_released("ui_down"):
-				#$AnimatedSprite2D.play("Idle(Screen)")
-			#elif event.is_action_released("ui_right"):
-				#$AnimatedSprite2D.play("Idle(Right)")
-			#elif event.is_action_released("ui_left"):
-				#$AnimatedSprite2D.play("Idle(Left)")
-
+	#ANIMATIONS----------------------------------------------
 func take_damage(impact):
 	var damage = int(impact)
 	var previousHP = currentHP
