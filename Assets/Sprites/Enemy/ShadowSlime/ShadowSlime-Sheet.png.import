@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxwwnwcxcoa5n"
-path="res://.godot/imported/Sprite-0009.png-32cb7519d7e1d24c27d08ada8414de3a.ctex"
+uid="uid://dduch1lf4fsdx"
+path="res://.godot/imported/ShadowSlime-Sheet.png-64beeb9264801029b6ad9d56145d9107.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Enemy/MoveUp/Sprite-0009.png"
-dest_files=["res://.godot/imported/Sprite-0009.png-32cb7519d7e1d24c27d08ada8414de3a.ctex"]
+source_file="res://Assets/Sprites/Enemy/ShadowSlime/ShadowSlime-Sheet.png"
+dest_files=["res://.godot/imported/ShadowSlime-Sheet.png-64beeb9264801029b6ad9d56145d9107.ctex"]
 
 [params]
 

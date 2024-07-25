@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqf707k07dyaj"
-path="res://.godot/imported/Sprite-0007.png-7fde5b48dd17c82ebec2deecc834c589.ctex"
+uid="uid://cb77psjak8ewy"
+path="res://.godot/imported/Speadow-Sheet.png-5dd7e92abe1e880be74a4d922984f35f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Enemy/MoveUp/Sprite-0007.png"
-dest_files=["res://.godot/imported/Sprite-0007.png-7fde5b48dd17c82ebec2deecc834c589.ctex"]
+source_file="res://Assets/Sprites/Enemy/Speadow/Speadow-Sheet.png"
+dest_files=["res://.godot/imported/Speadow-Sheet.png-5dd7e92abe1e880be74a4d922984f35f.ctex"]
 
 [params]
 
