@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var damageArea = $Area2D
 
 var initial_speed: float
 var throw_angle_degrees: float
@@ -26,6 +27,12 @@ var is_launch: bool = false
 var time_mult: float = 6.0
 
 var acidLifetime: float = 2.0
+var explosionLifetime: float = 0.5
+
+var acidDamage: float = 5.0
+var explosionDamage: float = 20.0
+
+var acidDuration: float = 0.0
 
 func _process(delta):
 	time += delta * time_mult
@@ -50,10 +57,19 @@ func _process(delta):
 		if potionType == TELEPORT:
 			playerReference.global_position = target_position
 			queue_free()
-		if potionType == ACID:
+		elif potionType == ACID:
 			animated_sprite_2d.play("AcidPool")
+			damageArea.set_monitoring(true)
+			damageArea.set_monitorable(true)
 			acidLifetime -= delta
 			if acidLifetime <= 0:
+				queue_free()
+		elif potionType == EXPLOSION:
+			damageArea.set_monitoring(true)
+			damageArea.set_monitorable(true)
+			explosionLifetime -= delta
+			if explosionLifetime <= 0:
+				damage_enemies_in_area(explosionDamage)
 				queue_free()
 			
 		is_launch  = false
@@ -73,7 +89,21 @@ func LaunchProjectile(initial_pos: Vector2, direction: Vector2, desired_distance
 	z_axis = 0
 	is_launch = true
 
+func _on_area_2d_body_entered(body):
+	if potionType == ACID:
+		if body.is_in_group("enemies"):
+			acidDuration += 1
 
-func _on_timer_timeout():
-	print("Timeout")
-	queue_free() 
+func _on_area_2d_body_exited(body):
+	if body.is_in_group("enemies"):
+		body.take_damage(acidDamage * acidDuration)
+	
+	
+func damage_enemies_in_area(damage: int):
+	for body in damageArea.get_overlapping_bodies():
+		if body.is_in_group("enemies"):
+			body.take_damage(damage)
+
+
+
+
