@@ -2,6 +2,7 @@ extends Node
 
 var config = ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://settings.ini"
+var count_scene = 0
 
 func _ready():
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):

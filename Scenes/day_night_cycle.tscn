@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cien6q3frysmt"]
+[gd_scene load_steps=3 format=3 uid="uid://cien6q3frysmt"]
 
 [ext_resource type="Script" path="res://Scripts/day_night.gd" id="1_md6fj"]
+[ext_resource type="Script" path="res://Scripts/day_night_cycle.gd" id="1_q5d8o"]
 
 [node name="DayNightCycle" type="Node2D"]
+script = ExtResource("1_q5d8o")
 
 [node name="DayNight" type="CanvasModulate" parent="."]
 color = Color(0.133333, 0.14902, 0.258824, 1)
