@@ -35,7 +35,7 @@ var target_position = Vector2()
 
 @onready var potionScene = preload("res://Scenes/potion.tscn")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Engine.time_scale == 1:
 		var direction_x = Input.get_axis("ui_left", "ui_right")
 		var direction_y = Input.get_axis("ui_up", "ui_down")
