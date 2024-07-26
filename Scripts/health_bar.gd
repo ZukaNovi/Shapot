@@ -1,6 +1,5 @@
 extends TextureProgressBar
 
-
 @onready var player = $"../../Player"
 
 var over_texture_100 = preload("res://Assets/Sprites/Player/Health-Stamina Bar/healthbarfull.png")
@@ -31,5 +30,4 @@ func _on_player_damage_taken(impact):
 func _on_player_killed():
 	value = player.MAX_HP
 	
-	
-	
+
