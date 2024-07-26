@@ -24,3 +24,4 @@ func finish_quest() -> void:
 		#update quest status
 		quest_status = QuestStatus.FINISHED
 		#update ui
+		QuestBox.visible = false
