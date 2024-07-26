@@ -156,6 +156,7 @@ texture_under = ExtResource("4_st7ae")
 texture_over = ExtResource("4_st7ae")
 texture_progress = ExtResource("5_7clg3")
 script = ExtResource("6_b8q5h")
+metadata/_edit_use_anchors_ = true
 
 [node name="DayNightCycle" parent="." instance=ExtResource("7_ufjhq")]
 
