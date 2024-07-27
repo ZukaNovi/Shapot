@@ -17,6 +17,7 @@ func _ready():
 	var audio_settings = ConfigFileHandler.load_audio_settings()
 	volume_slider.value = min(audio_settings.master_volume, 1.0) * 100
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
