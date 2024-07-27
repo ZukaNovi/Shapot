@@ -4,7 +4,7 @@ extends Sprite2D
 @onready var bed_sample = $BedSample
 
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	if quest.quest_status == quest.QuestStatus.AVAILABLE:
 		quest.start_quest() # start the quest
 	if quest.quest_status == quest.QuestStatus.REACHED_GOAL:

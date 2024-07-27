@@ -5,7 +5,7 @@ const DAY_COLOR = Color("#ffffff")
 @onready var day_night_cycle = $".."
 
 
-func _process(delta):
+func _process(_delta):
 	if day_night_cycle.scene_name == "Game":
 		self.color = NIGHT_COLOR
 	else:
