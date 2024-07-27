@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://ch22r5hovousd"]
+[gd_scene load_steps=79 format=3 uid="uid://ch22r5hovousd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_7u6th"]
 [ext_resource type="Texture2D" uid="uid://dnht66q3fnfli" path="res://Assets/Sprites/Player/Animations/Idle(back)/idle(back)1.png" id="2_w7p6o"]
@@ -471,6 +471,9 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_fi7l1")
 states/Walk/position = Vector2(653, 160)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_siba0"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_d6tvr"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_l6cdc")]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_j6n1r"]
+radius = 20.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7u6th")
 
@@ -506,3 +509,10 @@ tree_root = SubResource("AnimationNodeStateMachine_jpuac")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.232372, -0.100529)
 parameters/Walk/blend_position = Vector2(0.320513, 0.492064)
+
+[node name="DialogInteractionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogInteractionArea"]
+shape = SubResource("CircleShape2D_j6n1r")

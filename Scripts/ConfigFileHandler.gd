@@ -11,7 +11,7 @@ func _ready():
 		
 		config.set_value("audio", "master_volume", 0.5)
 		
-		config.set_value("hud", "color", "original")
+		config.set_value("firstdialog","value",0)
 		
 		config.save(SETTINGS_FILE_PATH)
 	else:
@@ -37,4 +37,10 @@ func load_audio_settings():
 	for key in config.get_section_keys("audio"):
 		audio_settings[key] = config.get_value("audio", key)
 	return audio_settings
-	
+
+func save_dialog_settings(value):
+	config.set_value("firstdialog", "value", value)
+	config.save(SETTINGS_FILE_PATH)
+
+func load_dialog_settings():
+	return config.get_value("firstquest","value",0)
