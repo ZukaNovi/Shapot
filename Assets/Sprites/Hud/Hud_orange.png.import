@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmehty1yu7t3p"
-path="res://.godot/imported/Hud(Orange).png-bd59b30906f3b79d3989f7c582a0aeb9.ctex"
+uid="uid://dciaad3vfbpto"
+path="res://.godot/imported/Hud_orange.png-ccf6728bdb0dfcf8d452d2a2ef7e8ce4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Hud/Hud(Orange).png"
-dest_files=["res://.godot/imported/Hud(Orange).png-bd59b30906f3b79d3989f7c582a0aeb9.ctex"]
+source_file="res://Assets/Sprites/Hud/Hud_orange.png"
+dest_files=["res://.godot/imported/Hud_orange.png-ccf6728bdb0dfcf8d452d2a2ef7e8ce4.ctex"]
 
 [params]
 

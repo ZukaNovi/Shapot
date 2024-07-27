@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dafxhpapi72yy"]
+[gd_scene load_steps=32 format=3 uid="uid://dafxhpapi72yy"]
 
 [ext_resource type="Script" path="res://Scripts/dungeon.gd" id="1_joyv7"]
 [ext_resource type="Texture2D" uid="uid://d2gjt5u03pdlh" path="res://Assets/Sprites/TileSet/GrassLands.png" id="1_urm6m"]
@@ -8,7 +8,24 @@
 [ext_resource type="Texture2D" uid="uid://r6br7qbipflp" path="res://Assets/Sprites/Player/Health-Stamina Bar/healthprogress.png" id="5_7clg3"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="6_b8q5h"]
 [ext_resource type="PackedScene" uid="uid://cien6q3frysmt" path="res://Scenes/day_night_cycle.tscn" id="7_ufjhq"]
+[ext_resource type="Texture2D" uid="uid://dbdfg4kwnj4bm" path="res://Assets/Sprites/Hud/Hud_original.png" id="8_tipq5"]
 [ext_resource type="PackedScene" uid="uid://bn17jitliftsk" path="res://Scenes/dungeon_entry.tscn" id="9_8u35e"]
+[ext_resource type="Texture2D" uid="uid://b2gahjxsajuun" path="res://Assets/Sprites/Player/Potions/Explosive/Explosive(Idle)1.png" id="9_36pgg"]
+[ext_resource type="Script" path="res://Scripts/PotionHUD.gd" id="9_eg1j5"]
+[ext_resource type="Texture2D" uid="uid://bqoyj4nx76wdw" path="res://Assets/Sprites/Player/Potions/Explosive/Explosive(Idle)2.png" id="10_1jehr"]
+[ext_resource type="Texture2D" uid="uid://bkjjsh21d7hsd" path="res://Assets/Sprites/Player/Potions/Explosive/Explosive(Idle)3.png" id="11_eujwt"]
+[ext_resource type="Texture2D" uid="uid://bjbr2o5xotqah" path="res://Assets/Sprites/Player/Potions/Explosive/Explosive(Idle)4.png" id="12_ggao1"]
+[ext_resource type="Texture2D" uid="uid://dkp8xkir7tmpp" path="res://Assets/Sprites/Player/Potions/Explosive/Explosive(Idle)5.png" id="13_2g42u"]
+[ext_resource type="Texture2D" uid="uid://bxxlwhx4s7h5a" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Idle)1.png" id="14_0pq10"]
+[ext_resource type="Texture2D" uid="uid://bossvwgrjs225" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Idle)2.png" id="15_6stat"]
+[ext_resource type="Texture2D" uid="uid://dx4cdvhqfh8mh" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Idle)3.png" id="16_3jgde"]
+[ext_resource type="Texture2D" uid="uid://d006jjpkoq7hl" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Idle)4.png" id="17_kipcv"]
+[ext_resource type="Texture2D" uid="uid://8rimqvu0bgu7" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Idle)5.png" id="18_uitsi"]
+[ext_resource type="Texture2D" uid="uid://cnvc50nvps7e7" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)1.png" id="19_0r6el"]
+[ext_resource type="Texture2D" uid="uid://dcqpvtv8stiwb" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)2.png" id="20_mvqx3"]
+[ext_resource type="Texture2D" uid="uid://bdg6hg8pnlhr" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)3.png" id="21_0htnf"]
+[ext_resource type="Texture2D" uid="uid://bjx2nw5gssjqf" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)4.png" id="22_84n10"]
+[ext_resource type="Texture2D" uid="uid://c4hjgt6fhoblq" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)5.png" id="23_5lnm5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1h182"]
 texture = ExtResource("1_urm6m")
@@ -116,10 +133,80 @@ texture = ExtResource("1_urm6m")
 [sub_resource type="TileSet" id="TileSet_eqxac"]
 sources/0 = SubResource("TileSetAtlasSource_1h182")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_jo3xv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_36pgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1jehr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_eujwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ggao1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2g42u")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0qfu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_0pq10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6stat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3jgde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_kipcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_uitsi")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qy0a6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_0r6el")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_mvqx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_0htnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_84n10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_5lnm5")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}]
+
 [node name="Dungeon" type="Node2D"]
 script = ExtResource("1_joyv7")
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -1
 tile_set = SubResource("TileSet_eqxac")
 format = 2
 layer_0/tile_data = PackedInt32Array(131077, 262144, 3, 131078, 262144, 3, 131079, 262144, 3, 131080, 262144, 3, 131081, 262144, 3, 131082, 262144, 3, 131083, 262144, 3, 131084, 262144, 3, 131085, 262144, 3, 131086, 262144, 3, 131087, 262144, 3, 131088, 262144, 3, 131089, 262144, 3, 131090, 262144, 3, 131091, 262144, 3, 131092, 262144, 3, 131093, 262144, 3, 393221, 393216, 7, 393222, 458752, 7, 393223, 524288, 7, 196613, 131072, 0, 196614, 131072, 0, 196615, 131072, 0, 196616, 131072, 0, 196617, 131072, 0, 196618, 131072, 0, 196619, 131072, 0, 262156, 131072, 0, 262157, 131072, 0, 262158, 131072, 0, 262159, 131072, 0, 262160, 131072, 0, 262161, 131072, 0, 262162, 131072, 0, 262163, 131072, 0, 262164, 131072, 0, 262165, 131072, 0, 196629, 131072, 0, 196628, 131072, 0, 196627, 131072, 0, 196626, 131072, 0, 196625, 131072, 0, 196624, 131072, 0, 196623, 131072, 0, 196622, 131072, 0, 196621, 131072, 0, 196620, 131072, 0, 262155, 131072, 0, 262154, 131072, 0, 262153, 131072, 0, 262152, 131072, 0, 262151, 131072, 0, 262150, 131072, 0, 262149, 131072, 0, 327685, 131072, 0, 327686, 131072, 0, 327687, 131072, 0, 327688, 131072, 0, 327689, 131072, 0, 327690, 131072, 0, 327691, 131072, 0, 327692, 131072, 0, 327693, 131072, 0, 327694, 131072, 0, 327695, 131072, 0, 327696, 131072, 0, 327697, 131072, 0, 327698, 131072, 0, 327699, 131072, 0, 327700, 131072, 0, 327701, 131072, 0, 327702, 131072, 0, 393238, 131072, 0, 393237, 131072, 0, 393236, 131072, 0, 393235, 131072, 0, 393234, 131072, 0, 393233, 131072, 0, 393232, 131072, 0, 393231, 131072, 0, 393230, 131072, 0, 393229, 131072, 0, 393228, 131072, 0, 393227, 131072, 0, 393226, 131072, 0, 393225, 131072, 0, 393224, 131072, 0, 458760, 131072, 0, 458759, 131072, 0, 458758, 131072, 0, 458757, 131072, 0, 458756, 131072, 0, 393220, 131072, 0, 327684, 131072, 0, 262148, 131072, 0, 196612, 131072, 0, 131076, 131072, 0, 65540, 131072, 0, 65541, 131072, 0, 65542, 131072, 0, 65543, 131072, 0, 65544, 131072, 0, 65545, 131072, 0, 65546, 131072, 0, 65547, 131072, 0, 65548, 131072, 0, 65549, 131072, 0, 65550, 131072, 0, 65551, 131072, 0, 65552, 131072, 0, 65553, 131072, 0, 65554, 131072, 0, 65555, 131072, 0, 65556, 131072, 0, 65557, 131072, 0, 65558, 131072, 0, 131094, 131072, 0, 196630, 131072, 0, 262166, 131072, 0, 262167, 131072, 0, 327703, 131072, 0, 458774, 131072, 0, 458773, 131072, 0, 458772, 131072, 0, 458771, 131072, 0, 458770, 131072, 0, 458769, 131072, 0, 458768, 131072, 0, 458767, 131072, 0, 458766, 131072, 0, 458765, 131072, 0, 458764, 131072, 0, 458763, 131072, 0, 458762, 131072, 0, 458761, 131072, 0, 524297, 131072, 0, 524296, 131072, 0, 524295, 131072, 0, 524294, 131072, 0, 524293, 131072, 0, 524292, 131072, 0, 524291, 131072, 0, 524290, 131072, 0, 458754, 131072, 0, 393218, 131072, 0, 327682, 131072, 0, 262146, 131072, 0, 196610, 131072, 0, 131074, 131072, 0, 65538, 131072, 0, 2, 131072, 0, 3, 131072, 0, 65539, 131072, 0, 131075, 131072, 0, 196611, 131072, 0, 262147, 131072, 0, 327683, 131072, 0, 393219, 131072, 0, 458755, 131072, 0, 4, 131072, 0, 5, 131072, 0, 9, 131072, 0, 10, 131072, 0, 11, 131072, 0, 12, 131072, 0, 13, 131072, 0, 14, 131072, 0, 15, 131072, 0, 16, 131072, 0, 8, 131072, 0, 7, 131072, 0, 6, 131072, 0, 17, 131072, 0, 18, 131072, 0, 19, 131072, 0, 20, 131072, 0, 21, 131072, 0, 22, 131072, 0, 23, 131072, 0, 65559, 131072, 0, 131095, 131072, 0, 196631, 131072, 0, 393239, 131072, 0, 458775, 131072, 0, 524311, 131072, 0, 524310, 131072, 0, 524309, 131072, 0, 524308, 131072, 0, 524307, 131072, 0, 524306, 131072, 0, 524305, 131072, 0, 524304, 131072, 0, 524303, 131072, 0, 524302, 131072, 0, 524301, 131072, 0, 524300, 131072, 0, 524299, 131072, 0, 524298, 131072, 0)
@@ -158,7 +245,49 @@ texture_progress = ExtResource("5_7clg3")
 script = ExtResource("6_b8q5h")
 metadata/_edit_use_anchors_ = true
 
+[node name="PotionHUD" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -317.0
+offset_top = -145.0
+offset_right = 67.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.6, 1.10602)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_tipq5")
+script = ExtResource("9_eg1j5")
+
+[node name="ExplosionPotion" type="AnimatedSprite2D" parent="CanvasLayer/PotionHUD"]
+position = Vector2(100, 111)
+scale = Vector2(2.6, 2.6)
+sprite_frames = SubResource("SpriteFrames_jo3xv")
+animation = &"Idle"
+frame = 3
+frame_progress = 0.918819
+
+[node name="AcidPotion" type="AnimatedSprite2D" parent="CanvasLayer/PotionHUD"]
+position = Vector2(193, 111)
+scale = Vector2(2.6, 2.6)
+sprite_frames = SubResource("SpriteFrames_p0qfu")
+animation = &"Idle"
+frame = 4
+frame_progress = 0.516667
+
+[node name="TeleportPotion" type="AnimatedSprite2D" parent="CanvasLayer/PotionHUD"]
+position = Vector2(286, 111)
+scale = Vector2(2.6, 2.6)
+sprite_frames = SubResource("SpriteFrames_qy0a6")
+animation = &"Idle"
+
 [node name="DayNightCycle" parent="." instance=ExtResource("7_ufjhq")]
+visible = false
 
 [node name="DungeonEntry" parent="." instance=ExtResource("9_8u35e")]
 position = Vector2(555, 35)

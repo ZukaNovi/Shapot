@@ -11,6 +11,8 @@ func _ready():
 		
 		config.set_value("audio", "master_volume", 0.5)
 		
+		config.set_value("hud", "color", "original")
+		
 		config.save(SETTINGS_FILE_PATH)
 	else:
 		config.load(SETTINGS_FILE_PATH)
@@ -35,3 +37,4 @@ func load_audio_settings():
 	for key in config.get_section_keys("audio"):
 		audio_settings[key] = config.get_value("audio", key)
 	return audio_settings
+	
