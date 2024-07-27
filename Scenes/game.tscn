@@ -113,6 +113,11 @@ script = ExtResource("16_xb262")
 position = Vector2(-106.446, 22.6007)
 shape = SubResource("CircleShape2D_ruqrd")
 
+[node name="VillageEnterSprite" type="Sprite2D" parent="."]
+position = Vector2(-107.441, 21.5245)
+scale = Vector2(0.344558, 0.344558)
+texture = ExtResource("11_1nj2x")
+
 [connection signal="body_entered" from="QuestSample/Area2D" to="QuestSample" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="QuestSample/BedSample/Area2D" to="QuestSample/BedSample" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="VillageEntrance" to="VillageEntrance" method="_on_body_entered"]

@@ -7,8 +7,8 @@ extends Control
 @onready var color_rect = $ColorRect
 
 
-
 func _on_return_button_pressed():
+	print(main)
 	main.pauseMenu()
 
 
