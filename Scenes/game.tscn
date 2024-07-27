@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://spnvri7fwple"]
+[gd_scene load_steps=13 format=3 uid="uid://spnvri7fwple"]
 
 [ext_resource type="PackedScene" uid="uid://ch22r5hovousd" path="res://Scenes/player.tscn" id="1_3jvnm"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_e3y04"]
 [ext_resource type="PackedScene" uid="uid://dqai4a0bufjj" path="res://Scenes/pause_menu.tscn" id="2_b3cxr"]
 [ext_resource type="Texture2D" uid="uid://b0ylgo2cjjg1g" path="res://Assets/Sprites/TileSet/HOUSE-Sheet.png" id="5_ivhj8"]
+[ext_resource type="PackedScene" uid="uid://dwf5sb1ocj6il" path="res://Scenes/dialog_area.tscn" id="7_kp3my"]
+[ext_resource type="PackedScene" uid="uid://yxteosrrv3dd" path="res://Scenes/dialog_player.tscn" id="8_ijlh5"]
 [ext_resource type="PackedScene" uid="uid://cien6q3frysmt" path="res://Scenes/day_night_cycle.tscn" id="9_bo1jq"]
 [ext_resource type="Script" path="res://Scripts/village_entrance.gd" id="16_xb262"]
 
@@ -572,6 +574,9 @@ sources/0 = SubResource("TileSetAtlasSource_kwucx")
 [sub_resource type="CircleShape2D" id="CircleShape2D_ruqrd"]
 radius = 19.9256
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o03dx"]
+size = Vector2(60.6844, 20)
+
 [node name="Game" type="Node2D"]
 scale = Vector2(1.0052, 0.929174)
 script = ExtResource("1_e3y04")
@@ -609,5 +614,17 @@ script = ExtResource("16_xb262")
 position = Vector2(-38.6326, 85.5489)
 shape = SubResource("CircleShape2D_ruqrd")
 
+[node name="DialogAreaBedFirst" parent="." instance=ExtResource("7_kp3my")]
+text_key = "bedfirst"
+
+[node name="CollisionShape2D" parent="DialogAreaBedFirst" index="0"]
+position = Vector2(47.2543, -48.4301)
+shape = SubResource("RectangleShape2D_o03dx")
+
+[node name="DialogPlayer" parent="." instance=ExtResource("8_ijlh5")]
+scene_text_file = "res://Assets/Jsons/openning.json"
+
 [connection signal="body_entered" from="VillageEntrance" to="VillageEntrance" method="_on_body_entered"]
 [connection signal="body_exited" from="VillageEntrance" to="VillageEntrance" method="_on_body_exited"]
+
+[editable path="DialogAreaBedFirst"]
