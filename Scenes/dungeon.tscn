@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dafxhpapi72yy"]
+[gd_scene load_steps=35 format=3 uid="uid://dafxhpapi72yy"]
 
 [ext_resource type="Script" path="res://Scripts/dungeon.gd" id="1_joyv7"]
 [ext_resource type="Texture2D" uid="uid://d2gjt5u03pdlh" path="res://Assets/Sprites/TileSet/GrassLands.png" id="1_urm6m"]
@@ -26,6 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://bdg6hg8pnlhr" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)3.png" id="21_0htnf"]
 [ext_resource type="Texture2D" uid="uid://bjx2nw5gssjqf" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)4.png" id="22_84n10"]
 [ext_resource type="Texture2D" uid="uid://c4hjgt6fhoblq" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)5.png" id="23_5lnm5"]
+[ext_resource type="PackedScene" uid="uid://bdv1gl5asp7sw" path="res://Scenes/enemy.tscn" id="27_23i58"]
+[ext_resource type="PackedScene" uid="uid://bwpvmy0ng44l2" path="res://Scenes/speadov.tscn" id="28_mo2at"]
+[ext_resource type="PackedScene" uid="uid://cc3jpakw8xnwl" path="res://Scenes/cube_enemy.tscn" id="29_anyyr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1h182"]
 texture = ExtResource("1_urm6m")
@@ -292,3 +295,12 @@ visible = false
 [node name="DungeonEntry" parent="." instance=ExtResource("9_8u35e")]
 position = Vector2(555, 35)
 scale = Vector2(0.460938, 0.460938)
+
+[node name="Enemy" parent="." instance=ExtResource("27_23i58")]
+position = Vector2(476, 159)
+
+[node name="Speadov" parent="." instance=ExtResource("28_mo2at")]
+position = Vector2(398, 74)
+
+[node name="CubeEnemy" parent="." instance=ExtResource("29_anyyr")]
+position = Vector2(294, 24)
