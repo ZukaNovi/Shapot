@@ -8,7 +8,7 @@ var paused = false
 func _ready():
 	ConfigFileHandler.count_scene = 1 + ConfigFileHandler.count_scene
 	dungeon_entry.scene_name = "Dungeon"
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("escape"):
 		pauseMenu()
 		
