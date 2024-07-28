@@ -581,21 +581,26 @@ size = Vector2(60.6844, 20)
 scale = Vector2(1.0052, 0.929174)
 script = ExtResource("1_e3y04")
 
-[node name="Player" parent="." instance=ExtResource("1_3jvnm")]
-texture_filter = 1
-position = Vector2(-8.95344, 55.9637)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="Player" instance=ExtResource("2_b3cxr")]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_b3cxr")]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 559.57
-offset_top = 296.051
-offset_right = 559.57
-offset_bottom = 296.051
+offset_left = -22.5202
+offset_top = 3.08289
+offset_right = -22.5202
+offset_bottom = 3.08289
+
+[node name="Player" parent="." instance=ExtResource("1_3jvnm")]
+texture_filter = 1
+position = Vector2(-8.95344, 55.9637)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
 
 [node name="TileMap" type="TileMap" parent="."]
 show_behind_parent = true
