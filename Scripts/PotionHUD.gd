@@ -14,7 +14,7 @@ func _ready():
 	texture = ORIGINAL_HUD
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if player.currentPotion == player.EXPLOSION:
 		explosion_potion.play("Idle")
 	elif player.currentPotion == player.ACID:

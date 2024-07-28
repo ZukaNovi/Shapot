@@ -17,7 +17,7 @@ func _ready():
 	
 	texture_over = over_texture_100
 	
-func _on_player_damage_taken(impact):
+func _on_player_damage_taken(_impact):
 	value = player.currentHP
 	
 	if value > 66 && value < 100:

@@ -11,12 +11,12 @@ func _physics_process(_delta):
 		#queue_free()
 
 
-func _on_DialogArea_area_entered(area):
+func _on_DialogArea_area_entered(_area):
 	print(ConfigFileHandler.load_dialog_settings())
 	if ConfigFileHandler.load_dialog_settings() != 1:
 		area_active = true
 
 
-func _on_DialogArea_area_exited(area):
+func _on_DialogArea_area_exited(_area):
 	area_active = false
 	ConfigFileHandler.save_dialog_settings(1)

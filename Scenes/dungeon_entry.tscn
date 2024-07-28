@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bn17jitliftsk"]
 
-[ext_resource type="Texture2D" path="res://Assets/Sprites/TileSet/Cellar.png" id="1_2j1at"]
+[ext_resource type="Texture2D" uid="uid://d0l132khnnnu6" path="res://Assets/Sprites/TileSet/Cellar.png" id="1_2j1at"]
 [ext_resource type="Script" path="res://Scripts/dungeon_entry.gd" id="2_0wp3a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t87t1"]
