@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bdg6hg8pnlhr" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)3.png" id="21_0htnf"]
 [ext_resource type="Texture2D" uid="uid://bjx2nw5gssjqf" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)4.png" id="22_84n10"]
 [ext_resource type="Texture2D" uid="uid://c4hjgt6fhoblq" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)5.png" id="23_5lnm5"]
-[ext_resource type="PackedScene" uid="uid://h013uitbprhx" path="res://Scenes/boss.tscn" id="30_vsqql"]
+[ext_resource type="PackedScene" path="res://Scenes/boss.tscn" id="30_vsqql"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1h182"]
 texture = ExtResource("1_urm6m")
