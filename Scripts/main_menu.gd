@@ -2,6 +2,7 @@ extends Control
 
 func _on_start_button_pressed():
 	Engine.time_scale = 1
+	ConfigFileHandler.save_dialog_settings(0)
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 
 
