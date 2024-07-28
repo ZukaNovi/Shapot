@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var pause_menu = $Player/PauseMenu
+@onready var pause_menu = $CanvasLayer/PauseMenu
 @onready var day_night_cycle = $DayNightCycle
 @onready var dungeon_entry = $DungeonEntry
 
