@@ -5,10 +5,10 @@ extends CharacterBody2D
 @onready var damageArea = $DamageArea
 @onready var attack_timer = $AttackTimer
 
-var health: int = 60
-var enemySpeed: float = 70.0
+var health: int = 120
+var enemySpeed: float = 50.0
 var direction: Vector2
-var enemyDamage = 20
+var enemyDamage = 30
 
 
 var patrol_direction: Vector2 = Vector2.RIGHT
@@ -21,7 +21,7 @@ var isChasing: bool = true
 
 func _ready():
 	add_to_group("enemies")
-
+	
 func _physics_process(delta):
 	var distance_to_player = global_position.distance_to(player.global_position)
 	
@@ -39,8 +39,8 @@ func _physics_process(delta):
 	var unitDirection = direction / direction.length()
 	if unitDirection != Vector2.ZERO: 
 		$AnimationTree.get("parameters/playback").travel("Move")
-		$AnimationTree.set("parameters/Walk/blend_position", unitDirection)
-
+		$AnimationTree.set("parameters/Move/blend_position", unitDirection)
+		
 func take_damage(damage: int):
 	health -= damage
 	if health <= 0:
@@ -48,7 +48,7 @@ func take_damage(damage: int):
 		
 func die():
 	queue_free()
-
+	
 func patrol(delta):
 	if patrol_direction == Vector2.RIGHT and global_position.x >= patrol_start_position.x + patrol_range:
 		patrol_direction = Vector2.LEFT
@@ -57,6 +57,7 @@ func patrol(delta):
 
 	velocity = patrol_direction * patrol_speed
 	move_and_slide()
+
 
 func _on_damage_area_body_entered(body):
 	if body == player and canAttack:
