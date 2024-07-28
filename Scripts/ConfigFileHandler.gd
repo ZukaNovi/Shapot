@@ -43,4 +43,4 @@ func save_dialog_settings(value):
 	config.save(SETTINGS_FILE_PATH)
 
 func load_dialog_settings():
-	return config.get_value("firstquest","value",0)
+	return config.get_value("firstdialog","value")
