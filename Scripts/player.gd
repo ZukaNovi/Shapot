@@ -102,26 +102,27 @@ func can_use_potions(potionType) -> bool: # Checks whether the potion is availab
 	
 	
 func use_potion(potionType): # Use the potion
-	target_position = get_global_mouse_position()
-	var direction = (target_position - global_position)
-	var distance = target_position.distance_to(global_position)
-	
-	potion = potionScene.instantiate()
-	get_parent().add_child(potion)
-	
-	potion.global_position = global_position
-	potion.target_position = target_position
-	potion.LaunchProjectile(global_position, direction, distance, 60)
-	
-	if currentPotion == TELEPORT:
-		potion.potionType = TELEPORT
-		potion.playerReference = self
-		potion.animated_sprite_2d.play("ThrowTeleport")
-	elif currentPotion == ACID:
-		potion.potionType = ACID
-		potion.animated_sprite_2d.play("ThrowAcid")
-	elif currentPotion == EXPLOSION:
-		potion.potionType = EXPLOSION
-		potion.animated_sprite_2d.play("ThrowExplosion")
-		
-	lastPotionUseTimes[currentPotion] = Time.get_ticks_msec() / 1000.0
+	if get_tree().get_current_scene().name == "Dungeon":
+		target_position = get_global_mouse_position()
+		var direction = (target_position - global_position)
+		var distance = target_position.distance_to(global_position)
+
+		potion = potionScene.instantiate()
+		get_parent().add_child(potion)
+
+		potion.global_position = global_position
+		potion.target_position = target_position
+		potion.LaunchProjectile(global_position, direction, distance, 60)
+
+		if currentPotion == TELEPORT:
+			potion.potionType = TELEPORT
+			potion.playerReference = self
+			potion.animated_sprite_2d.play("ThrowTeleport")
+		elif currentPotion == ACID:
+			potion.potionType = ACID
+			potion.animated_sprite_2d.play("ThrowAcid")
+		elif currentPotion == EXPLOSION:
+			potion.potionType = EXPLOSION
+			potion.animated_sprite_2d.play("ThrowExplosion")
+			
+		lastPotionUseTimes[currentPotion] = Time.get_ticks_msec() / 1000.0

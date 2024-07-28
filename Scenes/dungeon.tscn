@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dafxhpapi72yy"]
+[gd_scene load_steps=34 format=3 uid="uid://dafxhpapi72yy"]
 
 [ext_resource type="Script" path="res://Scripts/dungeon.gd" id="1_joyv7"]
 [ext_resource type="Texture2D" uid="uid://d2gjt5u03pdlh" path="res://Assets/Sprites/TileSet/GrassLands.png" id="1_urm6m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dqai4a0bufjj" path="res://Scenes/pause_menu.tscn" id="3_yibo0"]
 [ext_resource type="Texture2D" uid="uid://bobyxwa2hggj3" path="res://Assets/Sprites/Player/Health-Stamina Bar/healthbarfull.png" id="4_st7ae"]
 [ext_resource type="Texture2D" uid="uid://r6br7qbipflp" path="res://Assets/Sprites/Player/Health-Stamina Bar/healthprogress.png" id="5_7clg3"]
+[ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="5_8cn55"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="6_b8q5h"]
 [ext_resource type="PackedScene" uid="uid://cien6q3frysmt" path="res://Scenes/day_night_cycle.tscn" id="7_ufjhq"]
 [ext_resource type="Texture2D" uid="uid://dbdfg4kwnj4bm" path="res://Assets/Sprites/Hud/Hud_original.png" id="8_tipq5"]
@@ -26,9 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bdg6hg8pnlhr" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)3.png" id="21_0htnf"]
 [ext_resource type="Texture2D" uid="uid://bjx2nw5gssjqf" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)4.png" id="22_84n10"]
 [ext_resource type="Texture2D" uid="uid://c4hjgt6fhoblq" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)5.png" id="23_5lnm5"]
-[ext_resource type="PackedScene" uid="uid://bdv1gl5asp7sw" path="res://Scenes/enemy.tscn" id="27_23i58"]
-[ext_resource type="PackedScene" uid="uid://bwpvmy0ng44l2" path="res://Scenes/speadov.tscn" id="28_mo2at"]
-[ext_resource type="PackedScene" uid="uid://cc3jpakw8xnwl" path="res://Scenes/cube_enemy.tscn" id="29_anyyr"]
+[ext_resource type="PackedScene" uid="uid://h013uitbprhx" path="res://Scenes/boss.tscn" id="30_vsqql"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1h182"]
 texture = ExtResource("1_urm6m")
@@ -218,17 +217,10 @@ layer_0/tile_data = PackedInt32Array(131077, 262144, 3, 131078, 262144, 3, 13107
 texture_filter = 1
 position = Vector2(100, 100)
 
-[node name="PauseMenu" parent="Player" instance=ExtResource("3_yibo0")]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 559.57
-offset_top = 296.051
-offset_right = 559.57
-offset_bottom = 296.051
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+script = ExtResource("5_8cn55")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -289,6 +281,14 @@ scale = Vector2(2.6, 2.6)
 sprite_frames = SubResource("SpriteFrames_qy0a6")
 animation = &"Idle"
 
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_yibo0")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
 [node name="DayNightCycle" parent="." instance=ExtResource("7_ufjhq")]
 visible = false
 
@@ -296,11 +296,5 @@ visible = false
 position = Vector2(555, 35)
 scale = Vector2(0.460938, 0.460938)
 
-[node name="Enemy" parent="." instance=ExtResource("27_23i58")]
-position = Vector2(476, 159)
-
-[node name="Speadov" parent="." instance=ExtResource("28_mo2at")]
-position = Vector2(398, 74)
-
-[node name="CubeEnemy" parent="." instance=ExtResource("29_anyyr")]
-position = Vector2(294, 24)
+[node name="Boss" parent="." instance=ExtResource("30_vsqql")]
+position = Vector2(854, 147)
