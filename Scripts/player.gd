@@ -22,7 +22,7 @@ var lastPotionUseTimes = {
 }
 
 
-const SPEED = 200.0
+const SPEED = 120
 const MAX_HP = 100.0
 var currentHP = MAX_HP
 

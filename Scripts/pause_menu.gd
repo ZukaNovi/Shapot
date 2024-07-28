@@ -1,7 +1,7 @@
 extends Control
 
 @onready var main = $"../../"
-@onready var v_box_container2 = $VBoxContainer2
+@onready var v_box_container2 = $CanvasLayer/VBoxContainer2
 @onready var color_rect_2 = $ColorRect2
 @onready var v_box_container = $MarginContainer/VBoxContainer
 @onready var color_rect = $ColorRect

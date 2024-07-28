@@ -4,8 +4,9 @@ extends Control
 @onready var vsync_checkbox = $VSync
 @onready var volume_slider = $VolumeSlider
 @onready var v_box_container2 = $"."
-@onready var color_rect_2 = $"../ColorRect2"
-@onready var v_box_container = $"../MarginContainer/VBoxContainer"
+@onready var color_rect_2 = $"../../ColorRect2"
+@onready var v_box_container = $"../../MarginContainer/VBoxContainer"
+
 
 
 # Called when the node enters the scene tree for the first time.

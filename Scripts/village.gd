@@ -1,7 +1,11 @@
 extends Node2D
 
-@onready var pause_menu = $Player/PauseMenu
+
 #@onready var dungeon_entry = $DungeonEntry
+
+@onready var pause_menu = $CanvasLayer/PauseMenu
+
+
 
 
 var paused = false
