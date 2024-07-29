@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://spnvri7fwple"]
+[gd_scene load_steps=18 format=3 uid="uid://spnvri7fwple"]
 
 [ext_resource type="PackedScene" uid="uid://ch22r5hovousd" path="res://Scenes/player.tscn" id="1_3jvnm"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_e3y04"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/quest.gd" id="9_ee78y"]
 [ext_resource type="PackedScene" uid="uid://olbm5pdv812v" path="res://Scenes/game_manager.tscn" id="10_8gygr"]
 [ext_resource type="Script" path="res://Scripts/QuestArea.gd" id="10_sm4j3"]
+[ext_resource type="Texture2D" uid="uid://x2kkmkp4j6ev" path="res://Assets/Sprites/Pot and ShadowPot/Pot.png" id="12_qy4hh"]
 [ext_resource type="Script" path="res://Scripts/village_entrance.gd" id="16_xb262"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwucx"]
@@ -649,6 +650,11 @@ shape = SubResource("CircleShape2D_aexjx")
 script = ExtResource("9_ee78y")
 quest_description = "Go to bed(left click to bed)"
 reached_goal_text = "Go outside"
+
+[node name="Pot" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-31.8345, -15.0671)
+texture = ExtResource("12_qy4hh")
 
 [connection signal="body_entered" from="VillageEntrance" to="VillageEntrance" method="_on_body_entered"]
 [connection signal="body_exited" from="VillageEntrance" to="VillageEntrance" method="_on_body_exited"]
