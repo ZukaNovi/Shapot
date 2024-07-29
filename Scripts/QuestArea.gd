@@ -1,16 +1,19 @@
 extends Area2D
 
 @export var quest: Quest
-@onready var quest_area_reached_goal = $QuestAreaReachedGoal
+@onready var quest_area = $"."
 
 func _process(_delta):
-	if ConfigFileHandler.load_dialog_settings() == 1:
-		quest.reached_goal()
+	if ConfigFileHandler.load_quest_settings() == 0:
+		if ConfigFileHandler.load_dialog_settings() == 1:
+			quest.reached_goal()
 func _on_body_entered(body):
-	if quest.quest_status == quest.QuestStatus.AVAILABLE:
-		#start the quest
-		quest.start_quest()
-	if quest.quest_status == quest.QuestStatus.REACHED_GOAL:
-		#finish quest
-		quest.finish_quest()
+	if ConfigFileHandler.load_quest_settings() == 0:
+		if quest.quest_status == quest.QuestStatus.AVAILABLE:
+			#start the quest
+			quest.start_quest()
+		if quest.quest_status == quest.QuestStatus.REACHED_GOAL:
+			#finish quest
+			ConfigFileHandler.save_quest_settings(1)
+			quest.finish_quest()
 
