@@ -38,7 +38,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/boss.tscn" id="30_vsqql"]
 [ext_resource type="PackedScene" uid="uid://cc3jpakw8xnwl" path="res://Scenes/cube_enemy.tscn" id="31_gbpuh"]
 [ext_resource type="PackedScene" uid="uid://bdv1gl5asp7sw" path="res://Scenes/enemy.tscn" id="32_q45pd"]
-[ext_resource type="PackedScene" path="res://Scenes/speadov.tscn" id="33_mni7n"]
+[ext_resource type="PackedScene" uid="uid://bwpvmy0ng44l2" path="res://Scenes/speadov.tscn" id="33_mni7n"]
 [ext_resource type="Script" path="res://Scripts/BossHealthBar.gd" id="34_nnmau"]
 [ext_resource type="Texture2D" uid="uid://bm1fihx1nmltt" path="res://Assets/Sprites/Enemy/Pleir/THEITEM.png" id="40_451io"]
 
@@ -1548,6 +1548,7 @@ position = Vector2(592, -7)
 position = Vector2(532, 346)
 
 [node name="Item" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 1)
 texture = ExtResource("40_451io")
 
