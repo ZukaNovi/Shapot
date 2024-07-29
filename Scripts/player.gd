@@ -101,6 +101,7 @@ func take_damage(impact):
 		
 	if currentHP <= 0:
 		emit_signal("died")
+		ConfigFileHandler.playerHasItem = false
 		get_tree().reload_current_scene()
 		
 		
@@ -118,7 +119,7 @@ func use_potion(potionType): # Use the potion
 		var distance = target_position.distance_to(global_position)
 		potion = potionScene.instantiate()
 		get_parent().add_child(potion)
-		$AudioStreamPlayer.play()
+		potionsound.play()
 
 		potion.global_position = global_position
 		potion.target_position = target_position
