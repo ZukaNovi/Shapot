@@ -393,6 +393,7 @@ height = 54.0
 radius = 35.0143
 
 [node name="Boss" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_0cmis")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

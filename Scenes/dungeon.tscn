@@ -1345,6 +1345,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paxt0"]
+size = Vector2(163.019, 137.749)
+
 [node name="Dungeon" type="Node2D"]
 script = ExtResource("1_joyv7")
 
@@ -1414,6 +1417,14 @@ animation = &"Idle"
 frame = 3
 frame_progress = 0.918819
 
+[node name="ExplosionCooldown" type="ProgressBar" parent="CanvasLayer/PotionHUD/ExplosionPotion"]
+offset_left = -2.40385
+offset_top = -39.5626
+offset_right = 1.59615
+offset_bottom = -12.5626
+scale = Vector2(0.913462, 1)
+fill_mode = 1
+
 [node name="AcidPotion" type="AnimatedSprite2D" parent="CanvasLayer/PotionHUD"]
 position = Vector2(193, 111)
 scale = Vector2(2.6, 2.6)
@@ -1422,11 +1433,23 @@ animation = &"Idle"
 frame = 4
 frame_progress = 0.516667
 
+[node name="AcidCooldown" type="ProgressBar" parent="CanvasLayer/PotionHUD/AcidPotion"]
+offset_left = -1.63463
+offset_top = -41.9968
+offset_right = 2.36537
+offset_bottom = -14.9968
+
 [node name="TeleportPotion" type="AnimatedSprite2D" parent="CanvasLayer/PotionHUD"]
 position = Vector2(286, 111)
 scale = Vector2(2.6, 2.6)
 sprite_frames = SubResource("SpriteFrames_qy0a6")
 animation = &"Idle"
+
+[node name="TeleportCooldown" type="ProgressBar" parent="CanvasLayer/PotionHUD/TeleportPotion"]
+offset_left = -2.54807
+offset_top = -38.1716
+offset_right = 1.45193
+offset_bottom = -11.1716
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_yibo0")]
 visible = false
@@ -1435,6 +1458,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+
+[node name="BossHealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -282.0
+offset_top = -209.0
+offset_right = -62.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.56, 1.435)
+max_value = 150.0
+value = 150.0
+texture_under = ExtResource("26_0qinn")
+texture_over = ExtResource("26_0qinn")
+texture_progress = ExtResource("27_gyiam")
+script = ExtResource("26_7462o")
+metadata/_edit_use_anchors_ = true
 
 [node name="DayNightCycle" parent="." instance=ExtResource("7_ufjhq")]
 visible = false
