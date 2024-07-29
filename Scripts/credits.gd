@@ -25,27 +25,28 @@ var credits = [
 		"A game by Novilous for Pirate Game Jam 15"
 	],[
 		"Programming",
-		"Burak Demirkaya",
-		"Eren Demirkaya",
-		"Batuhan Bayram"
+		"funburak",
+		"erenbabal",
+		"Zakuchi"
 	],[
 		"Art",
-		"Batuhan Bayram"
+		"Zakuchi"
 	],[
 		"Music",
-		"Musician Name"
+		"Zakuchi"
 	],[
 		"Sound Effects",
-		"SFX Name"
+		"Zakuchi"
 	],[
 		"Testers",
-		"Burak Demirkaya",
-		"Eren Demirkaya",
-		"Batuhan Bayram"
+		"funburak",
+		"erenbabal",
+		"Zakuchi"
 	],[
 		"Tools used",
 		"Developed with Godot Engine 4.2.2",
-		"",
+		"Music created with Fami Studio",
+		"Sound effects created with Audacity",
 		"Art created with Aseprite",
 	],[
 		"Special thanks",

@@ -7,7 +7,10 @@ func _ready():
 func _on_start_button_pressed():
 	Engine.time_scale = 1
 	ConfigFileHandler.save_dialog_settings(0)
-	ConfigFileHandler.save_quest_settings(0)
+	ConfigFileHandler.save_quest_settings("quest1",0)
+	ConfigFileHandler.save_quest_settings("quest2",0)
+	ConfigFileHandler.save_quest_settings("quest3",0)
+	ConfigFileHandler.save_quest_settings("quest4",0)
 	ConfigFileHandler.playerHasItem = false
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 

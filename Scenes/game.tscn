@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://spnvri7fwple"]
+[gd_scene load_steps=26 format=3 uid="uid://spnvri7fwple"]
 
 [ext_resource type="PackedScene" uid="uid://ch22r5hovousd" path="res://Scenes/player.tscn" id="1_3jvnm"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_e3y04"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://olbm5pdv812v" path="res://Scenes/game_manager.tscn" id="10_8gygr"]
 [ext_resource type="Script" path="res://Scripts/QuestArea.gd" id="10_sm4j3"]
 [ext_resource type="Texture2D" uid="uid://x2kkmkp4j6ev" path="res://Assets/Sprites/Pot and ShadowPot/Pot.png" id="12_qy4hh"]
+[ext_resource type="Script" path="res://Scripts/PotQuestArea.gd" id="13_7lkg8"]
+[ext_resource type="Script" path="res://Scripts/PotArea.gd" id="13_7weqy"]
+[ext_resource type="Texture2D" uid="uid://dyvdn107sbg4g" path="res://Assets/Sprites/Pot and ShadowPot/ShadowPot-Sheet.png" id="15_lrheo"]
 [ext_resource type="Script" path="res://Scripts/village_entrance.gd" id="16_xb262"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwucx"]
@@ -584,6 +587,48 @@ size = Vector2(60.6844, 20)
 [sub_resource type="CircleShape2D" id="CircleShape2D_aexjx"]
 radius = 19.9256
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_naaa6"]
+radius = 21.8862
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jwppt"]
+radius = 14.9224
+
+[sub_resource type="Animation" id="Animation_nthb2"]
+resource_name = "Shapooooot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 19]
+}
+
+[sub_resource type="Animation" id="Animation_iehb0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_phv3s"]
+_data = {
+"RESET": SubResource("Animation_iehb0"),
+"Shapooooot": SubResource("Animation_nthb2")
+}
+
 [node name="Game" type="Node2D"]
 scale = Vector2(1.0052, 0.929174)
 script = ExtResource("1_e3y04")
@@ -656,8 +701,41 @@ texture_filter = 1
 position = Vector2(-31.8345, -15.0671)
 texture = ExtResource("12_qy4hh")
 
+[node name="PotArea" type="Area2D" parent="Pot"]
+script = ExtResource("13_7weqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pot/PotArea"]
+position = Vector2(0.994865, 4.30485)
+shape = SubResource("CircleShape2D_naaa6")
+
+[node name="PotQuestArea" type="Area2D" parent="." node_paths=PackedStringArray("quest")]
+script = ExtResource("13_7lkg8")
+quest = NodePath("Quest")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PotQuestArea"]
+position = Vector2(3.97931, 62.421)
+shape = SubResource("CircleShape2D_jwppt")
+
+[node name="Quest" type="Node2D" parent="PotQuestArea"]
+script = ExtResource("9_ee78y")
+quest_description = "Go To pot and Put the Boss Item(left click)"
+
+[node name="Shapot" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(-31.8345, -15.0671)
+texture = ExtResource("15_lrheo")
+hframes = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shapot"]
+libraries = {
+"": SubResource("AnimationLibrary_phv3s")
+}
+
 [connection signal="body_entered" from="VillageEntrance" to="VillageEntrance" method="_on_body_entered"]
 [connection signal="body_exited" from="VillageEntrance" to="VillageEntrance" method="_on_body_exited"]
 [connection signal="body_entered" from="QuestArea" to="QuestArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Pot/PotArea" to="Pot/PotArea" method="_on_body_entered"]
+[connection signal="body_entered" from="PotQuestArea" to="PotQuestArea" method="_on_body_entered"]
 
 [editable path="DialogAreaBedFirst"]

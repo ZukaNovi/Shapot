@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwpvmy0ng44l2"]
+[gd_scene load_steps=12 format=3 uid="uid://ce73lednsjrin"]
 
 [ext_resource type="Texture2D" uid="uid://cb77psjak8ewy" path="res://Assets/Sprites/Enemy/Speadow/Speadow-Sheet.png" id="1_wemmr"]
 [ext_resource type="Script" path="res://Scripts/speadov.gd" id="1_xwsgk"]

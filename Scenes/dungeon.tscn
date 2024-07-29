@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dafxhpapi72yy"]
+[gd_scene load_steps=54 format=3 uid="uid://dafxhpapi72yy"]
 
 [ext_resource type="Script" path="res://Scripts/dungeon.gd" id="1_joyv7"]
 [ext_resource type="Texture2D" uid="uid://d2gjt5u03pdlh" path="res://Assets/Sprites/TileSet/GrassLands.png" id="1_urm6m"]
@@ -35,12 +35,15 @@
 [ext_resource type="Texture2D" uid="uid://drtgjq421vcjc" path="res://Assets/Sprites/Enemy/Pleir/BossHealthBar.png" id="29_gejfk"]
 [ext_resource type="Texture2D" uid="uid://bs3es4u10hb5b" path="res://Assets/Sprites/Hud/CoolDownProgressTeleport.png" id="30_o6th3"]
 [ext_resource type="Texture2D" uid="uid://cx650guwoslyr" path="res://Assets/Sprites/Enemy/Pleir/BossHealthBar-export.png" id="30_tep7l"]
-[ext_resource type="PackedScene" path="res://Scenes/boss.tscn" id="30_vsqql"]
+[ext_resource type="PackedScene" uid="uid://c7vx7qgkkmsp3" path="res://Scenes/boss.tscn" id="30_vsqql"]
 [ext_resource type="PackedScene" uid="uid://cc3jpakw8xnwl" path="res://Scenes/cube_enemy.tscn" id="31_gbpuh"]
 [ext_resource type="PackedScene" uid="uid://bdv1gl5asp7sw" path="res://Scenes/enemy.tscn" id="32_q45pd"]
 [ext_resource type="PackedScene" uid="uid://bwpvmy0ng44l2" path="res://Scenes/speadov.tscn" id="33_mni7n"]
 [ext_resource type="Script" path="res://Scripts/BossHealthBar.gd" id="34_nnmau"]
 [ext_resource type="Texture2D" uid="uid://bm1fihx1nmltt" path="res://Assets/Sprites/Enemy/Pleir/THEITEM.png" id="40_451io"]
+[ext_resource type="Script" path="res://Scripts/DungeonQuestArea.gd" id="42_5dlgk"]
+[ext_resource type="Script" path="res://Scripts/quest.gd" id="42_jg61t"]
+[ext_resource type="PackedScene" uid="uid://olbm5pdv812v" path="res://Scenes/game_manager.tscn" id="43_hwerp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1h182"]
 texture = ExtResource("1_urm6m")
@@ -1355,6 +1358,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wm5co"]
 radius = 14.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lx5ta"]
+size = Vector2(20, 74)
+
 [node name="Dungeon" type="Node2D"]
 script = ExtResource("1_joyv7")
 
@@ -1368,7 +1374,7 @@ layer_0/tile_data = PackedInt32Array(131077, 327681, 2, 131078, 393217, 2, 13107
 
 [node name="Player" parent="." instance=ExtResource("2_ofgj1")]
 texture_filter = 1
-position = Vector2(24, 109)
+position = Vector2(53, 82)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
@@ -1557,4 +1563,20 @@ texture = ExtResource("40_451io")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item/Area2D"]
 shape = SubResource("CircleShape2D_wm5co")
 
+[node name="DungeonQuestArea" type="Area2D" parent="." node_paths=PackedStringArray("quest")]
+script = ExtResource("42_5dlgk")
+quest = NodePath("Quest")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonQuestArea"]
+position = Vector2(52, 80)
+shape = SubResource("RectangleShape2D_lx5ta")
+
+[node name="Quest" type="Node2D" parent="DungeonQuestArea"]
+script = ExtResource("42_jg61t")
+quest_description = "Find the Boss and Kill Him"
+reached_goal_text = "Go Back To House"
+
+[node name="GameManager" parent="." instance=ExtResource("43_hwerp")]
+
 [connection signal="body_entered" from="Item/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="DungeonQuestArea" to="DungeonQuestArea" method="_on_body_entered"]
