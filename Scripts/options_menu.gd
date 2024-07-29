@@ -2,10 +2,6 @@ extends Control
 #var red = preload("res://Assets/Sprites/Hud/Hud_red.png")
 #var orange = preload("res://Assets/Sprites/Hud/Hud_orange.png")
 #var original = preload("res://Assets/Sprites/Hud/Hud_original.png")
-#var DUNGEON_SCENE = preload("res://Scenes/dungeon.tscn")
-#@onready var potion_hud = get_node("Dungeon/CanvasLayer/PotionHUD")
-
-#BU RENK SECME OLAYI OLCAK
 
 @onready var fullscreen_checkbox = $VBoxContainer/Fullscreen
 @onready var vsync_checkbox = $VBoxContainer/VSync
@@ -18,7 +14,6 @@ func _ready():
 	
 	var audio_settings = ConfigFileHandler.load_audio_settings()
 	volume_slider.value = min(audio_settings.master_volume, 1.0) * 100
-
 func _on_fullscreen_toggled(toggled_on):
 	ConfigFileHandler.save_video_settings("fullscreen", toggled_on)
 	if toggled_on:
