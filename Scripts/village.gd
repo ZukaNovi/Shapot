@@ -7,7 +7,6 @@ extends Node2D
 var paused = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
 	dungeon_entry.scene_name = "Village"
 
 func _process(_delta):
