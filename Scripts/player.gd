@@ -58,7 +58,6 @@ func _physics_process(_delta):
 
 		if Input.is_action_just_pressed("left_click"):
 			if can_use_potions(currentPotion):
-				$AudioStreamPlayer.play()
 				use_potion(currentPotion)
 			
 		if Input.is_action_just_pressed("acid_potion"):

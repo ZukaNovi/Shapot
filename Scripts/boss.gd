@@ -29,7 +29,7 @@ func _ready():
 func _physics_process(_delta):
 	var distance_to_player = global_position.distance_to(player.global_position)
 	
-	if distance_to_player < 250 && canChase:
+	if distance_to_player < 200 && canChase:
 		playerFound = true
 		direction = global_position.direction_to(player.global_position)
 		velocity = direction * bossSpeed
