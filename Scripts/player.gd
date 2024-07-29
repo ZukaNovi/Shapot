@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var audio_stream_player = $AudioStreamPlayer
 
 signal damaged(by)
 signal died()
@@ -51,6 +52,7 @@ func _physics_process(_delta):
 		move_and_slide()
 		if Input.is_action_just_pressed("left_click"):
 			if can_use_potions(currentPotion):
+				$AudioStreamPlayer.play()
 				use_potion(currentPotion)
 			
 		if Input.is_action_just_pressed("acid_potion"):
@@ -110,7 +112,6 @@ func use_potion(potionType): # Use the potion
 		target_position = get_global_mouse_position()
 		var direction = (target_position - global_position)
 		var distance = target_position.distance_to(global_position)
-
 		potion = potionScene.instantiate()
 		get_parent().add_child(potion)
 

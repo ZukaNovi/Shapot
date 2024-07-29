@@ -1,4 +1,8 @@
 extends Control
+@onready var audio_stream_player = $AudioStreamPlayer
+
+func _ready():
+	$AudioStreamPlayer.play()
 
 func _on_start_button_pressed():
 	Engine.time_scale = 1
