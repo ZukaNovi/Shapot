@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://spnvri7fwple"]
+[gd_scene load_steps=17 format=3 uid="uid://spnvri7fwple"]
 
 [ext_resource type="PackedScene" uid="uid://ch22r5hovousd" path="res://Scenes/player.tscn" id="1_3jvnm"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_e3y04"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dwf5sb1ocj6il" path="res://Scenes/dialog_area.tscn" id="7_kp3my"]
 [ext_resource type="PackedScene" uid="uid://yxteosrrv3dd" path="res://Scenes/dialog_player.tscn" id="8_ijlh5"]
 [ext_resource type="PackedScene" uid="uid://cien6q3frysmt" path="res://Scenes/day_night_cycle.tscn" id="9_bo1jq"]
+[ext_resource type="Script" path="res://Scripts/quest.gd" id="9_ee78y"]
+[ext_resource type="PackedScene" uid="uid://olbm5pdv812v" path="res://Scenes/game_manager.tscn" id="10_8gygr"]
+[ext_resource type="Script" path="res://Scripts/QuestArea.gd" id="10_sm4j3"]
 [ext_resource type="Script" path="res://Scripts/village_entrance.gd" id="16_xb262"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwucx"]
@@ -577,6 +580,9 @@ radius = 19.9256
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o03dx"]
 size = Vector2(60.6844, 20)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_aexjx"]
+radius = 19.9256
+
 [node name="Game" type="Node2D"]
 scale = Vector2(1.0052, 0.929174)
 script = ExtResource("1_e3y04")
@@ -597,7 +603,7 @@ offset_bottom = 3.08289
 
 [node name="Player" parent="." instance=ExtResource("1_3jvnm")]
 texture_filter = 1
-position = Vector2(-8.95344, 55.9637)
+position = Vector2(-5.96896, 59.1924)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
@@ -623,13 +629,29 @@ shape = SubResource("CircleShape2D_ruqrd")
 text_key = "bedfirst"
 
 [node name="CollisionShape2D" parent="DialogAreaBedFirst" index="0"]
-position = Vector2(47.2543, -48.4301)
+position = Vector2(49.7413, -48.4301)
 shape = SubResource("RectangleShape2D_o03dx")
 
 [node name="DialogPlayer" parent="." instance=ExtResource("8_ijlh5")]
 scene_text_file = "res://Assets/Jsons/openning.json"
 
+[node name="GameManager" parent="." instance=ExtResource("10_8gygr")]
+
+[node name="QuestArea" type="Area2D" parent="." node_paths=PackedStringArray("quest")]
+script = ExtResource("10_sm4j3")
+quest = NodePath("Quest")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestArea"]
+position = Vector2(-38.7982, 61.3448)
+shape = SubResource("CircleShape2D_aexjx")
+
+[node name="Quest" type="Node2D" parent="QuestArea"]
+script = ExtResource("9_ee78y")
+quest_description = "Go to bed(left click to bed)"
+reached_goal_text = "Go outside"
+
 [connection signal="body_entered" from="VillageEntrance" to="VillageEntrance" method="_on_body_entered"]
 [connection signal="body_exited" from="VillageEntrance" to="VillageEntrance" method="_on_body_exited"]
+[connection signal="body_entered" from="QuestArea" to="QuestArea" method="_on_body_entered"]
 
 [editable path="DialogAreaBedFirst"]

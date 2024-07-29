@@ -11,9 +11,6 @@ var in_progress: bool = false
 
 @onready var background = $Background
 @onready var text_label = $TextLabel
-func _physics_process(_delta):
-	position_x = player.global_position.x
-	position_y = player.global_position.y
 	
 func _ready():
 	background.visible = false
@@ -31,19 +28,19 @@ func show_text():
 	text_label.text = selected_text.pop_front()
 
 func next_line():
-	if Input.is_action_just_pressed("left_click"):
-		if selected_text.size() > 0:
+	if selected_text.size() > 0:
+		if Input.is_action_just_pressed("left_click"):
 			show_text()
-		else:
-			finish()
+	else:
+		finish()
 
 func finish():
 	text_label.text = ""
 	background.visible = false
 	in_progress = false
 	get_tree().paused = false
-	ConfigFileHandler.save_dialog_settings(1)
-	queue_free()
+	#ConfigFileHandler.save_dialog_settings(1)
+	#queue_free()
 	
 func on_display_dialog(text_key):
 	if in_progress:
@@ -52,9 +49,5 @@ func on_display_dialog(text_key):
 		get_tree().paused = true
 		background.visible = true
 		in_progress = true
-		background.global_position.x = position_x + 30.0
-		background.global_position.y = position_y + 250.0
-		text_label.global_position.x = position_x + 175.0
-		text_label.global_position.y = position_y + 257.0
 		selected_text = scene_text[text_key].duplicate()
 		show_text()
