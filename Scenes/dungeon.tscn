@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dafxhpapi72yy"]
+[gd_scene load_steps=47 format=3 uid="uid://dafxhpapi72yy"]
 
 [ext_resource type="Script" path="res://Scripts/dungeon.gd" id="1_joyv7"]
 [ext_resource type="Texture2D" uid="uid://d2gjt5u03pdlh" path="res://Assets/Sprites/TileSet/GrassLands.png" id="1_urm6m"]
@@ -22,14 +22,20 @@
 [ext_resource type="Texture2D" uid="uid://bxxlwhx4s7h5a" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Idle)1.png" id="14_0pq10"]
 [ext_resource type="Texture2D" uid="uid://bossvwgrjs225" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Idle)2.png" id="15_6stat"]
 [ext_resource type="Texture2D" uid="uid://dx4cdvhqfh8mh" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Idle)3.png" id="16_3jgde"]
+[ext_resource type="Texture2D" uid="uid://dsjuhb4q580uf" path="res://Assets/Sprites/Hud/CoolDownBar.png" id="17_du8yo"]
 [ext_resource type="Texture2D" uid="uid://d006jjpkoq7hl" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Idle)4.png" id="17_kipcv"]
+[ext_resource type="Texture2D" uid="uid://cc5ouamqucdca" path="res://Assets/Sprites/Hud/CoolDownProgress2.png" id="18_a8tkj"]
 [ext_resource type="Texture2D" uid="uid://8rimqvu0bgu7" path="res://Assets/Sprites/Player/Potions/Acid/Acid(Idle)5.png" id="18_uitsi"]
 [ext_resource type="Texture2D" uid="uid://cnvc50nvps7e7" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)1.png" id="19_0r6el"]
 [ext_resource type="Texture2D" uid="uid://dcqpvtv8stiwb" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)2.png" id="20_mvqx3"]
 [ext_resource type="Texture2D" uid="uid://bdg6hg8pnlhr" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)3.png" id="21_0htnf"]
 [ext_resource type="Texture2D" uid="uid://bjx2nw5gssjqf" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)4.png" id="22_84n10"]
 [ext_resource type="Texture2D" uid="uid://c4hjgt6fhoblq" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)5.png" id="23_5lnm5"]
-[ext_resource type="PackedScene" path="res://Scenes/boss.tscn" id="30_vsqql"]
+[ext_resource type="Texture2D" uid="uid://jwm2pki8obs2" path="res://Assets/Sprites/Hud/CoolDownProgress3.png" id="24_4o23m"]
+[ext_resource type="Texture2D" uid="uid://bhvjwkuukmuk7" path="res://Assets/Sprites/Enemy/Pleir/BossHealthBar.png" id="29_gejfk"]
+[ext_resource type="Texture2D" uid="uid://bs3es4u10hb5b" path="res://Assets/Sprites/Hud/CoolDownProgressTeleport.png" id="30_o6th3"]
+[ext_resource type="Texture2D" uid="uid://clr8itb5d0i6i" path="res://Assets/Sprites/Enemy/Pleir/BossHealthBar-export.png" id="30_tep7l"]
+[ext_resource type="PackedScene" uid="uid://h013uitbprhx" path="res://Scenes/boss.tscn" id="30_vsqql"]
 [ext_resource type="PackedScene" uid="uid://cc3jpakw8xnwl" path="res://Scenes/cube_enemy.tscn" id="31_gbpuh"]
 [ext_resource type="PackedScene" uid="uid://bdv1gl5asp7sw" path="res://Scenes/enemy.tscn" id="32_q45pd"]
 [ext_resource type="PackedScene" uid="uid://bwpvmy0ng44l2" path="res://Scenes/speadov.tscn" id="33_mni7n"]
@@ -1344,9 +1350,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_paxt0"]
-size = Vector2(163.019, 137.749)
-
 [node name="Dungeon" type="Node2D"]
 script = ExtResource("1_joyv7")
 
@@ -1412,13 +1415,17 @@ animation = &"Idle"
 frame = 3
 frame_progress = 0.918819
 
-[node name="ExplosionCooldown" type="ProgressBar" parent="CanvasLayer/PotionHUD/ExplosionPotion"]
-offset_left = -2.40385
-offset_top = -39.5626
-offset_right = 1.59615
-offset_bottom = -12.5626
-scale = Vector2(0.913462, 1)
-fill_mode = 1
+[node name="CooldownExplosion" type="TextureProgressBar" parent="CanvasLayer/PotionHUD/ExplosionPotion"]
+texture_filter = 1
+offset_left = -4.32692
+offset_top = -43.3878
+offset_right = 35.6731
+offset_bottom = 28.6122
+scale = Vector2(0.43091, 0.43091)
+fill_mode = 3
+texture_under = ExtResource("17_du8yo")
+texture_over = ExtResource("17_du8yo")
+texture_progress = ExtResource("18_a8tkj")
 
 [node name="AcidPotion" type="AnimatedSprite2D" parent="CanvasLayer/PotionHUD"]
 position = Vector2(193, 111)
@@ -1428,11 +1435,16 @@ animation = &"Idle"
 frame = 4
 frame_progress = 0.516667
 
-[node name="AcidCooldown" type="ProgressBar" parent="CanvasLayer/PotionHUD/AcidPotion"]
-offset_left = -1.63463
-offset_top = -41.9968
-offset_right = 2.36537
-offset_bottom = -14.9968
+[node name="CooldownAcid" type="TextureProgressBar" parent="CanvasLayer/PotionHUD/AcidPotion"]
+offset_left = -4.27886
+offset_top = -43.3878
+offset_right = 35.7211
+offset_bottom = 28.6122
+scale = Vector2(0.431, 0.431)
+fill_mode = 3
+texture_under = ExtResource("17_du8yo")
+texture_over = ExtResource("17_du8yo")
+texture_progress = ExtResource("24_4o23m")
 
 [node name="TeleportPotion" type="AnimatedSprite2D" parent="CanvasLayer/PotionHUD"]
 position = Vector2(286, 111)
@@ -1440,11 +1452,16 @@ scale = Vector2(2.6, 2.6)
 sprite_frames = SubResource("SpriteFrames_qy0a6")
 animation = &"Idle"
 
-[node name="TeleportCooldown" type="ProgressBar" parent="CanvasLayer/PotionHUD/TeleportPotion"]
-offset_left = -2.54807
-offset_top = -38.1716
-offset_right = 1.45193
-offset_bottom = -11.1716
+[node name="CooldownTeleport" type="TextureProgressBar" parent="CanvasLayer/PotionHUD/TeleportPotion"]
+offset_left = -3.99038
+offset_top = -43.3878
+offset_right = 36.0096
+offset_bottom = 28.6122
+scale = Vector2(0.431, 0.431)
+fill_mode = 3
+texture_under = ExtResource("17_du8yo")
+texture_over = ExtResource("17_du8yo")
+texture_progress = ExtResource("30_o6th3")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_yibo0")]
 visible = false
@@ -1470,10 +1487,9 @@ grow_vertical = 0
 scale = Vector2(2.56, 1.435)
 max_value = 150.0
 value = 150.0
-texture_under = ExtResource("26_0qinn")
-texture_over = ExtResource("26_0qinn")
-texture_progress = ExtResource("27_gyiam")
-script = ExtResource("26_7462o")
+texture_under = ExtResource("29_gejfk")
+texture_over = ExtResource("29_gejfk")
+texture_progress = ExtResource("30_tep7l")
 metadata/_edit_use_anchors_ = true
 
 [node name="DayNightCycle" parent="." instance=ExtResource("7_ufjhq")]
@@ -1484,7 +1500,6 @@ position = Vector2(24, 57)
 scale = Vector2(0.460938, 0.460938)
 
 [node name="Boss" parent="." instance=ExtResource("30_vsqql")]
-texture_filter = 1
 position = Vector2(-224, 377)
 
 [node name="Enemy" parent="." instance=ExtResource("32_q45pd")]
