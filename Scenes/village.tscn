@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dxp3rubevhy8y"]
+[gd_scene load_steps=23 format=3 uid="uid://dxp3rubevhy8y"]
 
 [ext_resource type="Script" path="res://Scripts/village.gd" id="1_ih730"]
 [ext_resource type="Texture2D" uid="uid://bwpdlx14jo3h0" path="res://Assets/Sprites/TileSet/OutsideHouse-Sheet.png" id="2_1xtrd"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bhsjwxt2o1b3j" path="res://Assets/Sprites/TileSet/INVISIBLEWALL-Sheet.png" id="7_6fvei"]
 [ext_resource type="PackedScene" uid="uid://bn17jitliftsk" path="res://Scenes/dungeon_entry.tscn" id="7_cund4"]
 [ext_resource type="Texture2D" uid="uid://7ejn57ro73a1" path="res://Assets/Sprites/TileSet/Forest-Sheet.png" id="8_pshy5"]
+[ext_resource type="Script" path="res://Scripts/quest.gd" id="11_nplqa"]
+[ext_resource type="Script" path="res://Scripts/FindDungeonQuestArea.gd" id="11_uyfmx"]
+[ext_resource type="PackedScene" uid="uid://olbm5pdv812v" path="res://Scenes/game_manager.tscn" id="13_p3s7w"]
+[ext_resource type="Script" path="res://Scripts/DungeonEntryArea.gd" id="13_v2jjh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3maa"]
 texture = ExtResource("2_1xtrd")
@@ -1367,6 +1371,12 @@ sources/3 = SubResource("TileSetAtlasSource_r2jdj")
 [sub_resource type="CircleShape2D" id="CircleShape2D_g28wc"]
 radius = 24.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dfbsd"]
+radius = 29.0689
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vhvv1"]
+radius = 22.561
+
 [node name="Village" type="Node2D"]
 script = ExtResource("1_ih730")
 
@@ -1414,5 +1424,30 @@ script = ExtResource("4_rq2q3")
 position = Vector2(-133, 38)
 shape = SubResource("CircleShape2D_g28wc")
 
+[node name="FindDungeonQuestArea" type="Area2D" parent="." node_paths=PackedStringArray("quest")]
+position = Vector2(54, 12)
+script = ExtResource("11_uyfmx")
+quest = NodePath("Quest")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FindDungeonQuestArea"]
+position = Vector2(-176, 125)
+shape = SubResource("CircleShape2D_dfbsd")
+
+[node name="Quest" type="Node2D" parent="FindDungeonQuestArea"]
+script = ExtResource("11_nplqa")
+quest_description = "Find Dungeon Entry"
+
+[node name="DungeonEntryArea" type="Area2D" parent="."]
+position = Vector2(15, 3)
+script = ExtResource("13_v2jjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonEntryArea"]
+position = Vector2(-237, 134)
+shape = SubResource("CircleShape2D_vhvv1")
+
+[node name="GameManager" parent="." instance=ExtResource("13_p3s7w")]
+
 [connection signal="body_entered" from="HomeEntrance" to="HomeEntrance" method="_on_body_entered"]
 [connection signal="body_exited" from="HomeEntrance" to="HomeEntrance" method="_on_body_exited"]
+[connection signal="body_entered" from="FindDungeonQuestArea" to="FindDungeonQuestArea" method="_on_body_entered"]
+[connection signal="body_entered" from="DungeonEntryArea" to="DungeonEntryArea" method="_on_body_entered"]

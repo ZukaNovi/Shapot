@@ -1,6 +1,7 @@
 extends Sprite2D
 var scene_name :String
 
+
 @onready var player = get_node("/root/Village/Player")
 @onready var playerExit = get_node("/root/Dungeon/Player")
 

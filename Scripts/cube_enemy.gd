@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var collision = $CollisionShape2D
 @onready var damageArea = $DamageArea
 @onready var attack_timer = $AttackTimer
+@onready var animated_sprite_2d = $AnimatedSprite2D
+
 
 var health: int = 120
 var enemySpeed: float = 50.0
@@ -38,6 +40,9 @@ func _physics_process(delta):
 		
 func take_damage(damage: int):
 	health -= damage
+	animated_sprite_2d.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	animated_sprite_2d.modulate = Color.WHITE
 	if health <= 0:
 		die()
 		

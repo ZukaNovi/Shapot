@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8hux8getlkqy"]
+
+[ext_resource type="Script" path="res://Scripts/prologue.gd" id="1_yf3fv"]
+
+[node name="Prologue" type="Node2D"]
+script = ExtResource("1_yf3fv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.0
+offset_top = -178.0
+offset_right = -46.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.44, 2.44)
+text = "THANKS FOR PLAYING OUR GAME
+
+                  DEVELOPERS
+ERENBABAL,FUNBURAK,ZAKUCHI"
