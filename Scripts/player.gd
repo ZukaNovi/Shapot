@@ -34,6 +34,7 @@ var click_position = Vector2()
 var target_position = Vector2()
 
 @onready var potionScene = preload("res://Scenes/potion.tscn")
+@onready var sprite_2d = $Sprite2D
 
 func _physics_process(_delta):
 	if Engine.time_scale == 1:
@@ -84,6 +85,10 @@ func take_damage(impact):
 	var previousHP = currentHP
 	currentHP -= damage
 	currentHP = clamp(currentHP, 0, MAX_HP)
+	
+	sprite_2d.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	sprite_2d.modulate = Color.WHITE
 	
 	if previousHP != currentHP:
 		emit_signal("damaged", damage)
