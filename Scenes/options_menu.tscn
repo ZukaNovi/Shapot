@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://4c5matfpxp6a"]
+[gd_scene load_steps=5 format=3 uid="uid://4c5matfpxp6a"]
 
 [ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_3p57w"]
+[ext_resource type="Texture2D" uid="uid://dbdfg4kwnj4bm" path="res://Assets/Sprites/Hud/Hud_original.png" id="2_etaka"]
+[ext_resource type="Texture2D" uid="uid://dciaad3vfbpto" path="res://Assets/Sprites/Hud/Hud_orange.png" id="3_pg0fp"]
+[ext_resource type="Texture2D" uid="uid://cegwoeemnrxsu" path="res://Assets/Sprites/Hud/Hud_red.png" id="4_xhv76"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -48,7 +51,30 @@ layout_mode = 2
 size_flags_vertical = 8
 text = "Back"
 
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Original"
+popup/item_0/id = 0
+popup/item_1/text = "Orange"
+popup/item_1/id = 1
+popup/item_2/text = "Red"
+popup/item_2/id = 2
+
+[node name="Original" type="Sprite2D" parent="VBoxContainer/OptionButton"]
+position = Vector2(-697.5, 709.5)
+texture = ExtResource("2_etaka")
+
+[node name="Orange" type="Sprite2D" parent="VBoxContainer/OptionButton"]
+position = Vector2(-697.5, 603.5)
+texture = ExtResource("3_pg0fp")
+
+[node name="Red" type="Sprite2D" parent="VBoxContainer/OptionButton"]
+position = Vector2(-695.5, 504.5)
+texture = ExtResource("4_xhv76")
+
 [connection signal="toggled" from="VBoxContainer/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="toggled" from="VBoxContainer/VSync" to="." method="_on_v_sync_toggled"]
 [connection signal="drag_ended" from="VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_drag_ended"]
 [connection signal="pressed" from="VBoxContainer/Backbutton" to="." method="_on_backbutton_pressed"]
+[connection signal="item_selected" from="VBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
