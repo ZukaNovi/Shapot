@@ -39,6 +39,11 @@ func _physics_process(_delta):
 
 func take_damage(damage):
 	health -= damage
+	animated_sprite_2d.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	animated_sprite_2d.modulate = Color.WHITE
+	
+	
 	if health <= 0:
 		die()
 		
