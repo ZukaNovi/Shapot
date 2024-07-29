@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://ch22r5hovousd"]
+[gd_scene load_steps=80 format=3 uid="uid://ch22r5hovousd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_7u6th"]
 [ext_resource type="Texture2D" uid="uid://dnht66q3fnfli" path="res://Assets/Sprites/Player/Animations/Idle(back)/idle(back)1.png" id="2_w7p6o"]
@@ -50,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://cqobxbh2a07xv" path="res://Assets/Sprites/Player/Animations/Move(up)/MovingUp5.png" id="48_godeu"]
 [ext_resource type="Texture2D" uid="uid://xvls8apjoioe" path="res://Assets/Sprites/Player/Animations/Move(up)/MovingUp6.png" id="49_1mv8p"]
 [ext_resource type="Texture2D" uid="uid://box6d6dwaug73" path="res://Assets/Sprites/Player/Animations/3rdPlayer-Sheet.png" id="51_mbjs0"]
+[ext_resource type="AudioStream" uid="uid://dnukk74ck4vdd" path="res://Assets/Music/PotionThrow.wav" id="52_4sxrf"]
 [ext_resource type="PackedScene" uid="uid://bvtw3r0p2f2eq" path="res://Scenes/potion.tscn" id="151_5fmbr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eestp"]
@@ -259,6 +260,25 @@ tracks/0/keys = {
 "update": 1,
 "values": [12, 13, 14, 15, 16, 17]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("walkingsound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0.1, 1.1)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_vq7cy"]
 resource_name = "Moving_left"
@@ -513,3 +533,10 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogInteractionArea"]
 shape = SubResource("CircleShape2D_j6n1r")
+
+[node name="potionsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("52_4sxrf")
+
+[node name="walkingsound" type="AudioStreamPlayer" parent="."]
+volume_db = 3.649
+pitch_scale = 0.65
