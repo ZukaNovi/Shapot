@@ -36,11 +36,6 @@ func _physics_process(delta):
 			isChasing = false
 		patrol(delta)
 		
-	var unitDirection = direction / direction.length()
-	if unitDirection != Vector2.ZERO: 
-		$AnimationTree.get("parameters/playback").travel("Move")
-		$AnimationTree.set("parameters/Move/blend_position", unitDirection)
-		
 func take_damage(damage: int):
 	health -= damage
 	if health <= 0:
@@ -49,7 +44,7 @@ func take_damage(damage: int):
 func die():
 	queue_free()
 	
-func patrol(delta):
+func patrol(_delta):
 	if patrol_direction == Vector2.RIGHT and global_position.x >= patrol_start_position.x + patrol_range:
 		patrol_direction = Vector2.LEFT
 	elif patrol_direction == Vector2.LEFT and global_position.x <= patrol_start_position.x - patrol_range:

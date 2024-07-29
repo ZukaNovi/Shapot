@@ -44,7 +44,7 @@ func take_damage(damage: int):
 func die():
 	queue_free()
 	
-func patrol(delta):
+func patrol(_delta):
 	if patrol_direction == Vector2.RIGHT and global_position.x >= patrol_start_position.x + patrol_range:
 		patrol_direction = Vector2.LEFT
 	elif patrol_direction == Vector2.LEFT and global_position.x <= patrol_start_position.x - patrol_range:
