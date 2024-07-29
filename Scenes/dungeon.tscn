@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dafxhpapi72yy"]
+[gd_scene load_steps=41 format=3 uid="uid://dafxhpapi72yy"]
 
 [ext_resource type="Script" path="res://Scripts/dungeon.gd" id="1_joyv7"]
 [ext_resource type="Texture2D" uid="uid://d2gjt5u03pdlh" path="res://Assets/Sprites/TileSet/GrassLands.png" id="1_urm6m"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://r6br7qbipflp" path="res://Assets/Sprites/Player/Health-Stamina Bar/healthprogress.png" id="5_7clg3"]
 [ext_resource type="Script" path="res://Scripts/CameraScript.gd" id="5_8cn55"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="6_b8q5h"]
-[ext_resource type="AudioStream" uid="uid://dnukk74ck4vdd" path="res://Assets/Music/PotionThrow.wav" id="7_8t8xd"]
 [ext_resource type="PackedScene" uid="uid://cien6q3frysmt" path="res://Scenes/day_night_cycle.tscn" id="7_ufjhq"]
 [ext_resource type="Texture2D" uid="uid://dbdfg4kwnj4bm" path="res://Assets/Sprites/Hud/Hud_original.png" id="8_tipq5"]
 [ext_resource type="PackedScene" uid="uid://bn17jitliftsk" path="res://Scenes/dungeon_entry.tscn" id="9_8u35e"]
@@ -1367,10 +1366,6 @@ position = Vector2(24, 109)
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 script = ExtResource("5_8cn55")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player"]
-stream = ExtResource("7_8t8xd")
-volume_db = 6.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

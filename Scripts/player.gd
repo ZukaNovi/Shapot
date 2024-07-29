@@ -1,5 +1,8 @@
 extends CharacterBody2D
-@onready var audio_stream_player = $AudioStreamPlayer
+@onready var potionsound = $potionsound
+@onready var walkingsound = $walkingsound
+
+
 
 signal damaged(by)
 signal died()
@@ -52,6 +55,7 @@ func _physics_process(_delta):
 		else:
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 		move_and_slide()
+
 		if Input.is_action_just_pressed("left_click"):
 			if can_use_potions(currentPotion):
 				$AudioStreamPlayer.play()
