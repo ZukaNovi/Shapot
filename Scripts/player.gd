@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @onready var potionsound = $potionsound
-@onready var walkingsound = $walkingsound
+@onready var walkingsound = preload("res://Assets/Music/Walking.wav")
+
 
 
 
@@ -43,7 +44,6 @@ var target_position = Vector2()
 
 func _physics_process(_delta):
 	if Engine.time_scale == 1:
-		print(ConfigFileHandler.playerHasItem)
 		var direction_x = Input.get_axis("ui_left", "ui_right")
 		var direction_y = Input.get_axis("ui_up", "ui_down")
 		if direction_x:
@@ -59,7 +59,6 @@ func _physics_process(_delta):
 		if Input.is_action_just_pressed("left_click"):
 			if can_use_potions(currentPotion):
 				use_potion(currentPotion)
-			
 		if Input.is_action_just_pressed("acid_potion"):
 			print("Acid Potion")
 			currentPotion = ACID
@@ -119,6 +118,7 @@ func use_potion(potionType): # Use the potion
 		var distance = target_position.distance_to(global_position)
 		potion = potionScene.instantiate()
 		get_parent().add_child(potion)
+		$AudioStreamPlayer.play()
 
 		potion.global_position = global_position
 		potion.target_position = target_position
