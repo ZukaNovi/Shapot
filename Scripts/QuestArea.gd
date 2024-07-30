@@ -5,8 +5,9 @@ extends Area2D
 
 func _process(_delta):
 	if ConfigFileHandler.load_quest_settings("quest1") == 0:
-		if ConfigFileHandler.load_dialog_settings() == 1:
-			quest.reached_goal()
+		if ConfigFileHandler.dialog1done:
+			if ConfigFileHandler.load_dialog_settings() == 1:
+				quest.reached_goal()
 func _on_body_entered(body):
 	if ConfigFileHandler.load_quest_settings("quest1") == 0:
 		if quest.quest_status == quest.QuestStatus.AVAILABLE:
@@ -15,5 +16,6 @@ func _on_body_entered(body):
 		if quest.quest_status == quest.QuestStatus.REACHED_GOAL:
 			#finish quest
 			ConfigFileHandler.save_quest_settings("quest1",1)
+			ConfigFileHandler.quest1done = true
 			quest.finish_quest()
 
