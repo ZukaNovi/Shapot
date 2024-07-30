@@ -8,6 +8,8 @@ script = ExtResource("1_c3fw7")
 
 [node name="QuestBox" type="CanvasLayer" parent="."]
 visible = false
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="QuestBox"]
 texture_filter = 1

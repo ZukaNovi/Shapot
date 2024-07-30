@@ -52,6 +52,7 @@ size_flags_vertical = 8
 text = "Back"
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 item_count = 3
 popup/item_0/text = "Original"
