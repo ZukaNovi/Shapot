@@ -11,5 +11,6 @@ func _on_body_exited(_body):
 	entered = false
 
 func _physics_process(_delta):
-	if entered == true:
-		get_tree().change_scene_to_file("res://Scenes/village.tscn")
+	if ConfigFileHandler.quest1done:
+		if entered == true:
+			get_tree().change_scene_to_file("res://Scenes/village.tscn")

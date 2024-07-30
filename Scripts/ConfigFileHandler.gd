@@ -8,6 +8,11 @@ var playerHasItem: bool = false
 
 var potitem: bool = false
 
+var quest1done: bool = false
+var quest2done: bool = false
+var quest3done: bool = false
+var dialog1done: bool = false
+
 func _ready():
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):
 		config.set_value("video", "fullscreen",false)
