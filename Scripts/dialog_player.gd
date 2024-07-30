@@ -39,6 +39,7 @@ func finish():
 	background.visible = false
 	in_progress = false
 	get_tree().paused = false
+	ConfigFileHandler.dialog1done = true
 	#ConfigFileHandler.save_dialog_settings(1)
 	#queue_free()
 	

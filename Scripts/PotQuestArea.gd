@@ -22,14 +22,13 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body == player:
-		if ConfigFileHandler.playerHasItem:
-			if ConfigFileHandler.load_quest_settings("quest4") == 0:
-				if quest.quest_status == quest.QuestStatus.AVAILABLE:
-					#start the quest
-					quest.start_quest()
-				if quest.quest_status == quest.QuestStatus.REACHED_GOAL:
-					#finish quest
-					ConfigFileHandler.save_quest_settings("quest4",1)
-					quest.finish_quest()
-					
-	
+		if ConfigFileHandler.quest3done:
+			if ConfigFileHandler.playerHasItem:
+				if ConfigFileHandler.load_quest_settings("quest4") == 0:
+					if quest.quest_status == quest.QuestStatus.AVAILABLE:
+						#start the quest
+						quest.start_quest()
+					if quest.quest_status == quest.QuestStatus.REACHED_GOAL:
+						#finish quest
+						ConfigFileHandler.save_quest_settings("quest4",1)
+						quest.finish_quest()
