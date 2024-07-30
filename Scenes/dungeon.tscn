@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dafxhpapi72yy"]
+[gd_scene load_steps=55 format=3 uid="uid://dafxhpapi72yy"]
 
 [ext_resource type="Script" path="res://Scripts/dungeon.gd" id="1_joyv7"]
 [ext_resource type="Texture2D" uid="uid://d2gjt5u03pdlh" path="res://Assets/Sprites/TileSet/GrassLands.png" id="1_urm6m"]
@@ -44,6 +44,7 @@
 [ext_resource type="Script" path="res://Scripts/DungeonQuestArea.gd" id="42_5dlgk"]
 [ext_resource type="Script" path="res://Scripts/quest.gd" id="42_jg61t"]
 [ext_resource type="PackedScene" uid="uid://olbm5pdv812v" path="res://Scenes/game_manager.tscn" id="43_hwerp"]
+[ext_resource type="AudioStream" uid="uid://csm642dk848oo" path="res://Assets/Music/ingame.wav" id="45_fskr4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1h182"]
 texture = ExtResource("1_urm6m")
@@ -1577,6 +1578,9 @@ quest_description = "Find the Boss and Kill Him"
 reached_goal_text = "Go Back To House"
 
 [node name="GameManager" parent="." instance=ExtResource("43_hwerp")]
+
+[node name="DungeonMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("45_fskr4")
 
 [connection signal="body_entered" from="Item/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="DungeonQuestArea" to="DungeonQuestArea" method="_on_body_entered"]
