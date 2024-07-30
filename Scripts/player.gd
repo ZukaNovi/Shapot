@@ -96,6 +96,8 @@ func take_damage(impact):
 	await get_tree().create_timer(0.1).timeout
 	sprite_2d.modulate = Color.WHITE
 	
+	$takingdamage.play()
+	
 	if previousHP != currentHP:
 		emit_signal("damaged", damage)
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://ch22r5hovousd"]
+[gd_scene load_steps=82 format=3 uid="uid://ch22r5hovousd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_7u6th"]
 [ext_resource type="Texture2D" uid="uid://dnht66q3fnfli" path="res://Assets/Sprites/Player/Animations/Idle(back)/idle(back)1.png" id="2_w7p6o"]
@@ -52,6 +52,7 @@
 [ext_resource type="Texture2D" uid="uid://box6d6dwaug73" path="res://Assets/Sprites/Player/Animations/3rdPlayer-Sheet.png" id="51_mbjs0"]
 [ext_resource type="AudioStream" uid="uid://dnukk74ck4vdd" path="res://Assets/Music/PotionThrow.wav" id="52_4sxrf"]
 [ext_resource type="AudioStream" uid="uid://f4agdbqouwko" path="res://Assets/Music/Walking.wav" id="52_pypt1"]
+[ext_resource type="AudioStream" uid="uid://g1q82ptkm7oa" path="res://Assets/Music/takingdamage.wav" id="54_gqel3"]
 [ext_resource type="PackedScene" uid="uid://bvtw3r0p2f2eq" path="res://Scenes/potion.tscn" id="151_5fmbr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eestp"]
@@ -582,3 +583,6 @@ stream = ExtResource("52_4sxrf")
 [node name="walkingsound" type="AudioStreamPlayer" parent="."]
 volume_db = 12.0
 pitch_scale = 0.65
+
+[node name="takingdamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("54_gqel3")
