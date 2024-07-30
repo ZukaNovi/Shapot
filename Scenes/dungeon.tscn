@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://bjx2nw5gssjqf" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)4.png" id="22_84n10"]
 [ext_resource type="Texture2D" uid="uid://c4hjgt6fhoblq" path="res://Assets/Sprites/Player/Potions/Teleport/Teleport(Idle)5.png" id="23_5lnm5"]
 [ext_resource type="Texture2D" uid="uid://jwm2pki8obs2" path="res://Assets/Sprites/Hud/CoolDownProgress3.png" id="24_4o23m"]
-[ext_resource type="Texture2D" uid="uid://drtgjq421vcjc" path="res://Assets/Sprites/Enemy/Pleir/BossHealthBar.png" id="29_gejfk"]
+[ext_resource type="Texture2D" uid="uid://bhvjwkuukmuk7" path="res://Assets/Sprites/Enemy/Pleir/BossHealthBar.png" id="29_gejfk"]
 [ext_resource type="Texture2D" uid="uid://bs3es4u10hb5b" path="res://Assets/Sprites/Hud/CoolDownProgressTeleport.png" id="30_o6th3"]
 [ext_resource type="Texture2D" uid="uid://clr8itb5d0i6i" path="res://Assets/Sprites/Enemy/Pleir/BossHealthBar-export.png" id="30_tep7l"]
 [ext_resource type="PackedScene" uid="uid://h013uitbprhx" path="res://Scenes/boss.tscn" id="30_vsqql"]
@@ -1359,7 +1359,7 @@ animations = [{
 radius = 14.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx5ta"]
-size = Vector2(20, 74)
+size = Vector2(60, 81)
 
 [node name="Dungeon" type="Node2D"]
 script = ExtResource("1_joyv7")
@@ -1568,7 +1568,7 @@ script = ExtResource("42_5dlgk")
 quest = NodePath("Quest")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonQuestArea"]
-position = Vector2(52, 80)
+position = Vector2(32, 76.5)
 shape = SubResource("RectangleShape2D_lx5ta")
 
 [node name="Quest" type="Node2D" parent="DungeonQuestArea"]
