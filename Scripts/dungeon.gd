@@ -32,6 +32,11 @@ func _ready():
 	
 
 func _process(_delta):
+	var audio_settings = ConfigFileHandler.load_audio_settings()
+	var normalized_value = clamp(audio_settings.master_volume,0.0,1.0)
+	var db_value = -40 + (normalized_value * 60) # [-40,20]
+	dungeon_music.volume_db = db_value
+	
 	if Input.is_action_just_pressed("escape"):
 		pauseMenu()
 	if boss != null:
