@@ -1360,7 +1360,7 @@ animations = [{
 radius = 14.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx5ta"]
-size = Vector2(60, 81)
+size = Vector2(58, 51)
 
 [node name="Dungeon" type="Node2D"]
 script = ExtResource("1_joyv7")
@@ -1509,7 +1509,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 
 [node name="DungeonEntry" parent="." instance=ExtResource("9_8u35e")]
-position = Vector2(24, 57)
+position = Vector2(-61, 50)
 scale = Vector2(0.460938, 0.460938)
 
 [node name="Boss" parent="." instance=ExtResource("30_vsqql")]
@@ -1569,7 +1569,7 @@ script = ExtResource("42_5dlgk")
 quest = NodePath("Quest")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonQuestArea"]
-position = Vector2(32, 76.5)
+position = Vector2(-59, 49.5)
 shape = SubResource("RectangleShape2D_lx5ta")
 
 [node name="Quest" type="Node2D" parent="DungeonQuestArea"]
