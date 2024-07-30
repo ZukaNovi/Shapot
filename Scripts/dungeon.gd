@@ -7,7 +7,8 @@ extends Node2D
 @onready var item = $Item
 @onready var boss = $Boss
 @onready var player = $Player
-
+@onready var dungeon_music = $DungeonMusic
+var music_playing = true
 
 var bossLastPosition: Vector2
 
@@ -15,6 +16,21 @@ var paused = false
 func _ready():
 	ConfigFileHandler.count_scene = 1 + ConfigFileHandler.count_scene
 	dungeon_entry.scene_name = "Dungeon"
+	dungeon_music.play()
+	await get_tree().create_timer(40).timeout
+	dungeon_music.play()
+	await get_tree().create_timer(40).timeout
+	dungeon_music.play()
+	await get_tree().create_timer(40).timeout
+	dungeon_music.play()
+	await get_tree().create_timer(40).timeout
+	dungeon_music.play()
+	await get_tree().create_timer(40).timeout
+	dungeon_music.play()
+	await get_tree().create_timer(40).timeout
+	dungeon_music.play()
+	
+
 func _process(_delta):
 	if Input.is_action_just_pressed("escape"):
 		pauseMenu()
@@ -24,7 +40,6 @@ func _process(_delta):
 		if item != null:
 			item.global_position = bossLastPosition
 			item.show()
-	
 func pauseMenu():
 	if paused:
 		pause_menu.hide()
